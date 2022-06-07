@@ -1,4 +1,4 @@
-# WalletConnect Example Dapp
+# Stake
 
 ## Develop
 
