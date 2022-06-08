@@ -188,7 +188,7 @@ class App extends React.Component<any, any> {
     const { connected, fetching } = this.state;
     return (
       <SLayout>
-        <Column maxWidth={1400} spanHeight>
+        <Column maxWidth="100vw" spanHeight>
           <Header
             connected={connected}
             killSession={this.killSession}

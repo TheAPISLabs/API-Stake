@@ -4,24 +4,26 @@ import Blockie from "./Blockie";
 import { ellipseAddress, getChainData } from "../helpers/utilities";
 import { fonts, transitions } from "../styles";
 import Button from "./Button";
-import ContractAddress from "src/utils/contract";
-import ClaimAbi from "../abi/Claim.js";
-import { useConnect } from "src/hooks/useConnect.js";
+// import ContractAddress from "src/utils/contract";
+// import ClaimAbi from "../abi/Claim.js";
+// import { useConnect } from "src/hooks/useConnect.js";
 import { useWeb3React } from "@web3-react/core";
 import MetamaskConnect from "./MetamaskConnect";
 import { useEagerConnect } from "src/hooks/useMatemask.js";
 import Modal from "./Modal";
-
+import aplImgs from "../assets/ApiLogo.png";
 const SHeader = styled.div`
   margin-top: -1px;
-  margin-bottom: 1px;
+  //   margin-bottom: 1px;
   width: 100%;
   height: 100px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 16px;
-  max-width: 100%;
+
+  //   max-width: 100%;
+  padding: 0 26%;
+  background: #161426;
 `;
 
 const SActiveAccount = styled.div`
@@ -29,6 +31,43 @@ const SActiveAccount = styled.div`
   align-items: center;
   position: relative;
   font-weight: 500;
+`;
+const AplImg = styled.img`
+  width: 139px;
+  height: 38px;
+`;
+const DocsBox = styled.div`
+  display: flex;
+  width: 156px;
+  justify-content: space-between;
+`;
+const Staking = styled.p`
+  color: rgba(155, 155, 155, 1);
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+  line-height: 16px;
+`;
+const Point = styled.p`
+  color: rgba(155, 155, 155, 1);
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+  line-height: 17px;
+`;
+const Docs = styled.p`
+  color: rgba(255, 255, 255, 1);
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+  line-height: 16px;
+`;
+const Govern = styled.p`
+  color: rgba(155, 155, 155, 1);
+  font-size: 12px;
+  font-weight: 500;
+  text-align: left;
+  line-height: 16px;
 `;
 
 const SActiveChain = styled(SActiveAccount as any)`
@@ -83,11 +122,11 @@ const SDisconnect = styled.div<IHeaderStyle>`
 const SConnectButton = styled(Button as any)`
   border-radius: 8px;
   font-size: ${fonts.size.medium};
-  height: 44px;
-  width: 100%;
   margin: 12px 0;
-  width: 100px;
-  background: #6b00cc;
+  background: #6639e5;
+  border-radius: 16px;
+  width: 197px;
+  height: 32px;
 `;
 
 interface IHeaderProps {
@@ -109,10 +148,10 @@ const Header = ({ connected, killSession, connect, fetching }: IHeaderProps) => 
     console.error(error);
   }
 
-  const ClaimContract = useConnect(ClaimAbi, ContractAddress.claim[chainId ?? 1]);
-  const claimToken = () => {
-    ClaimContract.methods.claimTokens().send({ from: account });
-  };
+  //   const ClaimContract = useConnect(ClaimAbi, ContractAddress.claim[chainId ?? 1]);
+  //   const claimToken = () => {
+  //     ClaimContract.methods.claimTokens().send({ from: account });
+  //   };
 
   return (
     <SHeader>
@@ -120,12 +159,19 @@ const Header = ({ connected, killSession, connect, fetching }: IHeaderProps) => 
         <>
           {/* <p>Connected to</p>
               <p>{activeChain}</p> */}
-          <SConnectButton onClick={claimToken} left fetching={fetching}>
+          {/* <SConnectButton onClick={claimToken} left fetching={fetching}>
             {"Claim"}
-          </SConnectButton>
+          </SConnectButton> */}
+          <AplImg src={aplImgs} />
         </>
       </SActiveChain>
-
+      <DocsBox>
+        <Staking>Staking</Staking>
+        <Point>·</Point>
+        <Docs>Docs</Docs>
+        <Point>·</Point>
+        <Govern>Govern</Govern>
+      </DocsBox>
       {account ? (
         <SActiveAccount>
           <SBlockie address={account} />

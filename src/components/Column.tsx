@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 interface IColumnStyleProps {
   spanHeight: boolean;
-  maxWidth: number;
+  maxWidth: number | string;
   center: boolean;
 }
 
