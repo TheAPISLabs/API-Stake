@@ -8,10 +8,11 @@ import Button from "./Button";
 // import ClaimAbi from "../abi/Claim.js";
 // import { useConnect } from "src/hooks/useConnect.js";
 import { useWeb3React } from "@web3-react/core";
-import MetamaskConnect from "./MetamaskConnect";
-import { useEagerConnect } from "src/hooks/useMatemask.js";
-import Modal from "./Modal";
+// import MetamaskConnect from "./MetamaskConnect";
+// import { useEagerConnect } from "src/hooks/useMatemask.js";
+// import Modal from "./Modal";
 import aplImgs from "../assets/ApiLogo.png";
+import WalletModal from "./WalletModal";
 const SHeader = styled.div`
   margin-top: -1px;
   //   margin-bottom: 1px;
@@ -146,7 +147,7 @@ const Header = ({ connected, killSession, connect, fetching }: IHeaderProps) => 
   let activeChain = null;
   const { account, chainId, deactivate } = useWeb3React();
   const [isShowModal, setIsShowModal] = useState(false);
-  const triedEager = useEagerConnect();
+  //   const triedEager = useEagerConnect();
   try {
     activeChain = chainId ? getChainData(chainId).name : null;
     console.log(activeChain);
@@ -208,7 +209,7 @@ const Header = ({ connected, killSession, connect, fetching }: IHeaderProps) => 
           </SConnectButton>
         </>
       )}
-      <Modal
+      {/* <Modal
         show={isShowModal}
         opacity={0.2}
         toggleModal={() => {
@@ -219,7 +220,13 @@ const Header = ({ connected, killSession, connect, fetching }: IHeaderProps) => 
         <SConnectButton right onClick={connect} fetching={fetching}>
           {"Connect"}
         </SConnectButton>
-      </Modal>
+      </Modal> */}
+      <WalletModal
+        setIsShowModal={setIsShowModal}
+        isShowModal={isShowModal}
+        connect={connect}
+        fetching={fetching}
+      />
     </SHeader>
   );
 };

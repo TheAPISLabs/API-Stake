@@ -12,7 +12,6 @@ import styled from "styled-components";
 // import BigNumber from "bignumber.js";
 import ContractAddress from "src/utils/contract";
 
-import { isMobile } from "src/helpers/utilities";
 import "./index.css";
 import congratsImgs from "../../assets/Congrats.gif";
 import WillImgs from "../../assets/APIS-logo 1.png";
@@ -21,6 +20,9 @@ import ClaimContractAbi from "src/abi/Claim.js";
 
 import { useWeb3React } from "@web3-react/core";
 import whiteAddress from "src/commen/whiteList.js";
+import Button from "src/components/Button";
+import { fonts } from "src/styles";
+import WalletModal from "src/components/WalletModal";
 
 const StakingTitleApi = styled.p`
   font-weight: 500;
@@ -524,8 +526,26 @@ const WillImg = styled.img`
   background: #fff;
   margin-left: 24px;
 `;
-
-export default function Home() {
+const SConnectButton = styled(Button as any)`
+  border-radius: 8px;
+  font-size: ${fonts.size.medium};
+  margin: 12px 0;
+  background: #6639e5;
+  border-radius: 16px;
+  width: 197px;
+  height: 32px;
+  color: #fff;
+  & > div {
+    background: transparent !important;
+  }
+`;
+interface IHome {
+  killSession: () => void;
+  connected: boolean;
+  connect: () => void;
+  fetching: boolean;
+}
+export default function Home({ connected, killSession, connect, fetching }: IHome) {
   const { chainId, account } = useWeb3React();
 
   //   const TokenContract = useConnect(TokenAbi, ContractAddress.token[chainId ?? 1]);
@@ -537,6 +557,8 @@ export default function Home() {
   };
   const [currentLi, setCurrentLi] = useState(1);
   const [claimStatus, setClaimStatus] = useState(0);
+  const [isShowModal, setIsShowModal] = useState(false);
+
   const [CongratsData, setCongratsData] = useState({
     WillNum: "500",
   });
@@ -545,7 +567,7 @@ export default function Home() {
       return;
     }
     const isWhiteAddress = whiteAddress.includes(account);
-    setClaimStatus(isWhiteAddress ? 1 : 0);
+    setClaimStatus(isWhiteAddress ? 2 : 1);
     setCongratsData({
       WillNum: "500",
     });
@@ -701,6 +723,21 @@ export default function Home() {
               <ClaimBtn onClick={claimToken}>Claim tokens</ClaimBtn>
             </ClaimForm>
           </ClaimBox>
+        ) : claimStatus === 2 ? (
+          <SorryBox>
+            <Congrats>Welcome!</Congrats>
+            <SorryTest>
+              Connect your wallet and check your eligibility for claiming tokens!
+            </SorryTest>
+            <SConnectButton
+              onClick={() => {
+                setIsShowModal(true);
+              }}
+              fetching={fetching}
+            >
+              Connect Wallet
+            </SConnectButton>
+          </SorryBox>
         ) : (
           <SorryBox>
             <Congrats>Sorry</Congrats>
@@ -712,204 +749,96 @@ export default function Home() {
             <SorryBtn>Exploring HOOK</SorryBtn>
           </SorryBox>
         )}
+        <WalletModal
+          isShowModal={isShowModal}
+          connect={connect}
+          fetching={fetching}
+          setIsShowModal={setIsShowModal}
+        />
       </>
     );
   };
   return (
     <>
-      {isMobile() ? (
-        // <MobileBox>
-        //   <Column maxWidth={1000} spanHeight>
-        //     <StakingTitleApi>API</StakingTitleApi>
-        //     <StakingTitleStak>Staking</StakingTitleStak>
-        //     <StakingTitleApi>Dashboard</StakingTitleApi>
-        //   </Column>
-        //   <MobileBlock>
-        //     <div>
-        //       <StakingApiTitle>My API Staking</StakingApiTitle>
-        //       <TotalStakedToUsd>{totalStaked}</TotalStakedToUsd>
-        //       <TotalStaked>TOTAL STAKED</TotalStaked>
-        //     </div>
-        //     <div>
-        //       <DisStakingApiTitle>My API Staking</DisStakingApiTitle>
-        //       <TotalStakedToUsd>{walletBalance.toFixed(2)}</TotalStakedToUsd>
-        //       <TotalStaked>AVAILABLE IN WALLET</TotalStaked>
-        //     </div>
-        //   </MobileBlock>
-        //   <MobileBlock>
-        //     <div>
-        //       <TotalStakerTitle>PENALIZATION</TotalStakerTitle>
-        //       <AprNumber>{penalization}%</AprNumber>
-        //       {/* <AprDayData>
-        //         <span>13%</span> +7k today
-        //       </AprDayData> */}
-        //     </div>
-        //   </MobileBlock>
-        //   <MobileBlock>
-        //     <TotalStakerTitle>ESTIMATED REWARDS</TotalStakerTitle>
-        //     <AprNumber>{apr}%</AprNumber>
-        //     <AprDayData>
-        //       <span>APR</span>
-        //     </AprDayData>
-        //   </MobileBlock>
-        //   <MobileBlock>
-        //     <StakingApiTitle>API Stats</StakingApiTitle>
-        //     <div>
-        //       <StatsTitle>API PRICE</StatsTitle>
-        //       <StatsData>--</StatsData>
-        //     </div>
-        //     <div>
-        //       <StatsTitle>DAILY REWARDS</StatsTitle>
-        //       <StatsData>$391,820.75</StatsData>
-        //     </div>
-        //     <div>
-        //       <StatsTitle>CIRCULATING SUPPLY</StatsTitle>
-        //       <StatsData>$391,820.75</StatsData>
-        //     </div>
-        //   </MobileBlock>
-        //   <MobileBlock>
-        //     <MobileStakingPanel>
-        //       <PanelTop>
-        //         <PanelTopTitle>Stake Ends</PanelTopTitle>
-        //         <PanelTopTimeOut>
-        //           <div>
-        //             <PanelTimeOutTitle>DAY</PanelTimeOutTitle>
-        //             <PanelTimeOutVal>5</PanelTimeOutVal>
-        //           </div>
-        //           <div>
-        //             <PanelTimeOutTitle>DAY</PanelTimeOutTitle>
-        //             <PanelTimeOutVal>5</PanelTimeOutVal>
-        //           </div>
-        //           <div>
-        //             <PanelTimeOutTitle>DAY</PanelTimeOutTitle>
-        //             <PanelTimeOutVal>5</PanelTimeOutVal>
-        //           </div>
-        //           <div>
-        //             <PanelTimeOutTitle>DAY</PanelTimeOutTitle>
-        //             <PanelTimeOutVal>5</PanelTimeOutVal>
-        //           </div>
-        //         </PanelTopTimeOut>
-        //       </PanelTop>
-        //       <AmountStake>
-        //         <AmountStakeTitle>Amount to Stake</AmountStakeTitle>
-        //         <StakeInput
-        //           onChange={events => {
-        //             setInputValue(Number(events.target.value));
-        //           }}
-        //           type="number"
-        //         />
-        //         <StakeButton onClick={stakeHandler}>STAKE</StakeButton>
-        //         <StakeLine />
-        //       </AmountStake>
-        //       <CurrentStaking>
-        //         <CurrentStakeTitle>Current Staking</CurrentStakeTitle>
+      <StakingWrap>
+        <Column maxWidth={1000}>
+          <StakingTitle>
+            <StakingTitleApi>API</StakingTitleApi>
+            <StakingTitleStak>Staking</StakingTitleStak>
+            <StakingTitleDashboard>Dashboard</StakingTitleDashboard>
+          </StakingTitle>
+          <Trade>
+            Trade Bitcoin, Ethereum, USDT, and the top altcoins on the legendary crypto asset
+            exchange.
+          </Trade>
+        </Column>
 
-        //         {ledgerArrTh.map((res: any, index: number) => {
-        //           return (
-        //             <>
-        //               {!res.ended ? (
-        //                 <CurrentItem key={index}>
-        //                   <div>{new BigNumber(res.amount).div(10 ** 18).toString()}</div>
-        //                   <Unstake
-        //                     onClick={() => {
-        //                       unStakeHandler(index);
-        //                     }}
-        //                   >
-        //                     UNSTAKE
-        //                   </Unstake>
-        //                 </CurrentItem>
-        //               ) : (
-        //                 ""
-        //               )}
-        //             </>
-        //           );
-        //         })}
-        //       </CurrentStaking>
-        //     </MobileStakingPanel>
-        //   </MobileBlock>
-        // </MobileBox>
-        <></>
-      ) : (
-        <StakingWrap>
-          <Column maxWidth={1000}>
-            <StakingTitle>
-              <StakingTitleApi>API</StakingTitleApi>
-              <StakingTitleStak>Staking</StakingTitleStak>
-              <StakingTitleDashboard>Dashboard</StakingTitleDashboard>
-            </StakingTitle>
-            <Trade>
-              Trade Bitcoin, Ethereum, USDT, and the top altcoins on the legendary crypto asset
-              exchange.
-            </Trade>
-          </Column>
+        <Column maxWidth={910}>
+          <StakeOrClaim>
+            <StakeOrClaimUl>
+              <StakeOrClaimLiS
+                onClick={() => {
+                  return;
+                  setStakeOrClaimLi(1);
+                }}
+                style={{
+                  borderBottom: StakeOrClaimLi === 1 ? " 2px solid rgb(104, 99, 212)" : "",
+                  color: StakeOrClaimLi === 1 ? "#6863D4" : "#777E90",
+                }}
+              >
+                Stake
+              </StakeOrClaimLiS>
+              <StakeOrClaimLiSe
+                onClick={() => {
+                  setStakeOrClaimLi(2);
+                }}
+                style={{
+                  borderBottom: StakeOrClaimLi === 2 ? " 2px solid rgb(104, 99, 212)" : "",
+                  color: StakeOrClaimLi === 2 ? "#6863D4" : "#777E90",
+                }}
+              >
+                Claim
+              </StakeOrClaimLiSe>
+            </StakeOrClaimUl>
+          </StakeOrClaim>
+          {StakeOrClaimClass(1)}
+        </Column>
+        <Column maxWidth="100vw">
+          <FoodBox>
+            <GetStartedBox>
+              <Looks>Total LOOKS helps you earn rewaarda.It’s neat.</Looks>
+              <Powers>Get the token that Powers LooksRare</Powers>
 
-          <Column maxWidth={910}>
-            <StakeOrClaim>
-              <StakeOrClaimUl>
-                <StakeOrClaimLiS
-                  onClick={() => {
-                    return;
-                    setStakeOrClaimLi(1);
-                  }}
-                  style={{
-                    borderBottom: StakeOrClaimLi === 1 ? " 2px solid rgb(104, 99, 212)" : "",
-                    color: StakeOrClaimLi === 1 ? "#6863D4" : "#777E90",
-                  }}
-                >
-                  Stake
-                </StakeOrClaimLiS>
-                <StakeOrClaimLiSe
-                  onClick={() => {
-                    setStakeOrClaimLi(2);
-                  }}
-                  style={{
-                    borderBottom: StakeOrClaimLi === 2 ? " 2px solid rgb(104, 99, 212)" : "",
-                    color: StakeOrClaimLi === 2 ? "#6863D4" : "#777E90",
-                  }}
-                >
-                  Claim
-                </StakeOrClaimLiSe>
-              </StakeOrClaimUl>
-            </StakeOrClaim>
-            {StakeOrClaimClass(1)}
-          </Column>
-          <Column maxWidth="100vw">
-            <FoodBox>
-              <GetStartedBox>
-                <Looks>Total LOOKS helps you earn rewaarda.It’s neat.</Looks>
-                <Powers>Get the token that Powers LooksRare</Powers>
-
-                <TheRates>
-                  The rates shown on this page are only provided for your reference: APR and APY are
-                  calculated based on current ROI. The actual rates will fluctuate a lot according
-                  to many different factors, including token prices, trading volume, liquidity,
-                  amount staked, and more.
-                </TheRates>
-              </GetStartedBox>
-              <CopyrightBox>
-                <CopyrightTitle>
-                  <Copyright>Copyright 2022 Hook</Copyright>
-                  <Blockchains>One-stop Data Analysis For All Blockchains.</Blockchains>
-                </CopyrightTitle>
-                <LinkBox>
-                  <Link href="https://app.gitbook.com/o/dHoRYUVnGdpDW6kzvwKH/s/8MYNEydsCb1yG0qhMpJZ/products/hook">
-                    About
-                  </Link>
-                  <Link href="/licenses">API</Link>
-                  <Link href="https://simmmple.com/terms-of-service">Contact</Link>
-                  <Link href="https://www.blog.simmmple.com/">Help</Link>
-                  <Link href="https://www.blog.simmmple.com/">Jobs</Link>
-                  <Link href="https://www.blog.simmmple.com/">Bug Bounty</Link>
-                  <Link href="">Brand</Link>
-                  <Link href="https://app.gitbook.com/o/dHoRYUVnGdpDW6kzvwKH/s/8MYNEydsCb1yG0qhMpJZ/docs/terms-and-conditions">
-                    Terms of Service
-                  </Link>
-                </LinkBox>
-              </CopyrightBox>
-            </FoodBox>
-          </Column>
-        </StakingWrap>
-      )}
+              <TheRates>
+                The rates shown on this page are only provided for your reference: APR and APY are
+                calculated based on current ROI. The actual rates will fluctuate a lot according to
+                many different factors, including token prices, trading volume, liquidity, amount
+                staked, and more.
+              </TheRates>
+            </GetStartedBox>
+            <CopyrightBox>
+              <CopyrightTitle>
+                <Copyright>Copyright 2022 Hook</Copyright>
+                <Blockchains>One-stop Data Analysis For All Blockchains.</Blockchains>
+              </CopyrightTitle>
+              <LinkBox>
+                <Link href="https://app.gitbook.com/o/dHoRYUVnGdpDW6kzvwKH/s/8MYNEydsCb1yG0qhMpJZ/products/hook">
+                  About
+                </Link>
+                <Link href="/licenses">API</Link>
+                <Link href="https://simmmple.com/terms-of-service">Contact</Link>
+                <Link href="https://www.blog.simmmple.com/">Help</Link>
+                <Link href="https://www.blog.simmmple.com/">Jobs</Link>
+                <Link href="https://www.blog.simmmple.com/">Bug Bounty</Link>
+                <Link href="">Brand</Link>
+                <Link href="https://app.gitbook.com/o/dHoRYUVnGdpDW6kzvwKH/s/8MYNEydsCb1yG0qhMpJZ/docs/terms-and-conditions">
+                  Terms of Service
+                </Link>
+              </LinkBox>
+            </CopyrightBox>
+          </FoodBox>
+        </Column>
+      </StakingWrap>
     </>
   );
 }

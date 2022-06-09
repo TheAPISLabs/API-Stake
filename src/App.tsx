@@ -196,7 +196,12 @@ class App extends React.Component<any, any> {
             fetching={fetching}
           />
         </Column>
-        <Home />
+        <Home
+          connected={connected}
+          killSession={this.killSession}
+          connect={this.connect}
+          fetching={fetching}
+        />
       </SLayout>
     );
   };
