@@ -8,8 +8,8 @@ const ContractAddress = {
     4: "0x883f34E307369A93A9267Ed67C9eD7a13a5f9Fc5", // rinkeby
   },
   claim: {
-    1: "0xcD372aA3c63f088ee2B7850306Eb645a47B8E684", // mainnet
-    4: "0xcD372aA3c63f088ee2B7850306Eb645a47B8E684", // rinkeby
+    1: "0xcEfF574Fa1F1e1c3C9d46C401FF048DB1aE73836", // mainnet
+    4: "0xcEfF574Fa1F1e1c3C9d46C401FF048DB1aE73836", // rinkeby
   },
 };
 export default ContractAddress;

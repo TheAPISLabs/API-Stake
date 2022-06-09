@@ -10,10 +10,17 @@ import styled from "styled-components";
 // import { BigNumber as BN, ethers } from "ethers";
 // import web3 from "src/utils/web3.js";
 // import BigNumber from "bignumber.js";
+import ContractAddress from "src/utils/contract";
+
 import { isMobile } from "src/helpers/utilities";
 import "./index.css";
 import congratsImgs from "../../assets/Congrats.gif";
 import WillImgs from "../../assets/APIS-logo 1.png";
+import { useConnect } from "src/hooks/useConnect.js";
+import ClaimContractAbi from "src/abi/Claim.js";
+
+import { useWeb3React } from "@web3-react/core";
+
 const StakingTitleApi = styled.p`
   font-weight: 500;
   font-size: 48px;
@@ -409,6 +416,7 @@ const ClaimBtn = styled.div`
   &:hover {
     opacity: 0.5;
   }
+  z-index: 100;
 `;
 // const SorryBtn = styled.div`
 //   width: 198px;
@@ -535,13 +543,22 @@ const WillImg = styled.img`
 `;
 
 export default function Home() {
+  const { chainId, account } = useWeb3React();
+
+  //   const TokenContract = useConnect(TokenAbi, ContractAddress.token[chainId ?? 1]);
+  const ClaimContract = useConnect(ClaimContractAbi, ContractAddress.claim[chainId ?? 1]);
+  const claimToken = () => {
+    console.log(account, ClaimContract);
+    // ClaimContract.methods.claimTokens();
+    ClaimContract.methods.claimTokens().send({ from: account });
+  };
   const [currentLi, setCurrentLi] = useState(1);
   const [CongratsData, setCongratsData] = useState({
-    WillNum: "687.26",
+    WillNum: "500",
   });
   useEffect(() => {
     setCongratsData({
-      WillNum: "687.26",
+      WillNum: "500",
     });
   }, []);
   const currentClass = (index: number) => {
@@ -692,7 +709,7 @@ export default function Home() {
                 <WillImg src={WillImgs} />
               </WillImgAndNum>
             </Receive>
-            <ClaimBtn>Claim tokens</ClaimBtn>
+            <ClaimBtn onClick={claimToken}>Claim tokens</ClaimBtn>
           </ClaimForm>
         </ClaimBox>
         {/* <SorryBox>
@@ -868,7 +885,7 @@ export default function Home() {
             </StakeOrClaim>
             {StakeOrClaimClass(1)}
           </Column>
-          <Column maxWidth={1920}>
+          <Column maxWidth="100vw">
             <FoodBox>
               <GetStartedBox>
                 <Looks>Total LOOKS helps you earn rewaarda.It’s neat.</Looks>
