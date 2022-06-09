@@ -5,7 +5,7 @@ import styled from "styled-components";
 import Button from "./Button";
 import MetamaskConnect from "./MetamaskConnect";
 import Modal from "./Modal";
-
+import "../page/index/index.css";
 const SConnectButton = styled(Button as any)`
   border-radius: 8px;
   font-size: ${fonts.size.medium};
@@ -18,6 +18,13 @@ const SConnectButton = styled(Button as any)`
   & > div {
     background: transparent !important;
   }
+`;
+const ModalTitle = styled.p`
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 24px;
+  color: #fcfcfd;
+  margin-bottom: 66px;
 `;
 interface IWalletModal {
   isShowModal: boolean;
@@ -37,6 +44,7 @@ const WalletModal = ({ isShowModal, connect, setIsShowModal, fetching }: IWallet
         setIsShowModal(false);
       }}
     >
+      <ModalTitle>connect your wallet</ModalTitle>
       <MetamaskConnect triedEager={triedEager} />
       <SConnectButton right onClick={connect} fetching={fetching}>
         {"Connect"}

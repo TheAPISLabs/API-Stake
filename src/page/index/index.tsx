@@ -336,7 +336,7 @@ const Congrats = styled.p`
   text-align: center;
   line-height: 24px;
   position: relative;
-  z-index: 1111;
+  z-index: 1;
 `;
 const ClaimForm = styled.div`
   width: 810px;
@@ -355,7 +355,7 @@ const CongratsImg = styled.img`
   position: absolute;
   top: -11px;
   left: 106px;
-  z-index: 10;
+  z-index: 0;
   width: 700px;
   opacity: 0;
   animation: fadenum 1.5s;
