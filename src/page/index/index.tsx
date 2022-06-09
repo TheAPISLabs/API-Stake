@@ -20,6 +20,7 @@ import { useConnect } from "src/hooks/useConnect.js";
 import ClaimContractAbi from "src/abi/Claim.js";
 
 import { useWeb3React } from "@web3-react/core";
+import whiteAddress from "src/commen/whiteList.js";
 
 const StakingTitleApi = styled.p`
   font-weight: 500;
@@ -51,25 +52,7 @@ const StakingTitleDashboard = styled.p`
   height: 58px;
   margin-right: 15px;
 `;
-const StartedBtn = styled.div`
-  width: 144px;
-  height: 40px;
-  border-radius: 4px;
-  border: 1px solid #6639e4;
-  color: rgba(255, 255, 255, 1);
-  font-size: 12px;
-  font-weight: 500;
-  padding: 12px 22px;
-  justify-content: space-between;
-  align-items: center;
-  display: flex;
-  cursor: pointer;
-  margin: auto;
-  &:hover {
-    // transform: translateY(-1px);
-    opacity: 0.5;
-  }
-`;
+
 const Trade = styled.p`
   width: 332.8px;
   height: 53px;
@@ -338,12 +321,12 @@ const ClaimBox = styled.div`
   padding: 92px 33px 30px 56px;
   position: relative;
 `;
-// const SorryBox = styled.div`
-//   width: 899px;
-//   height: 348px;
-//   border: 0.5px solid rgba(155, 155, 155, 0.3);
-//   padding: 92px 33px 30px 56px;
-// `;
+const SorryBox = styled.div`
+  width: 899px;
+  height: 348px;
+  border: 0.5px solid rgba(155, 155, 155, 0.3);
+  padding: 92px 33px 30px 56px;
+`;
 const Congrats = styled.p`
   color: rgba(252, 252, 253, 1);
   font-size: 36px;
@@ -418,24 +401,24 @@ const ClaimBtn = styled.div`
   }
   z-index: 100;
 `;
-// const SorryBtn = styled.div`
-//   width: 198px;
-//   height: 46px;
-//   border-radius: 18px;
-//   background: linear-gradient(180deg, rgba(159, 107, 244, 1) 0%, rgba(102, 57, 229, 1) 100%);
-//   color: rgba(255, 255, 255, 1);
-//   font-size: 18px;
-//   font-weight: 500;
-//   text-align: center;
-//   line-height: 46px;
-//   margin-top: 38px;
-// cursor: pointer;
-//   float: right;
-//  &:hover {
-// transform: translateY(-1px);
-//  opacity: 0.5;
-// }
-// `;
+const SorryBtn = styled.div`
+  width: 198px;
+  height: 46px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(159, 107, 244, 1) 0%, rgba(102, 57, 229, 1) 100%);
+  color: rgba(255, 255, 255, 1);
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+  line-height: 46px;
+  margin-top: 38px;
+  cursor: pointer;
+  float: right;
+  &:hover {
+    transform: translateY(-1px);
+    opacity: 0.5;
+  }
+`;
 const CongratTest = styled.p`
   width: 209px;
   color: rgba(119, 126, 144, 1);
@@ -445,13 +428,13 @@ const CongratTest = styled.p`
   position: relative;
   z-index: 1111;
 `;
-// const SorryTest = styled.p`
-//   width: 300px;
-//   color: rgba(119, 126, 144, 1);
-//   font-size: 12px;
-//   font-weight: 400;
-//   margin: 0 auto;
-// `;
+const SorryTest = styled.p`
+  width: 300px;
+  color: rgba(119, 126, 144, 1);
+  font-size: 12px;
+  font-weight: 400;
+  margin: 0 auto;
+`;
 const FoodBox = styled.div`
   width: 100%;
   background: #1c1930;
@@ -553,14 +536,20 @@ export default function Home() {
     ClaimContract.methods.claimTokens().send({ from: account });
   };
   const [currentLi, setCurrentLi] = useState(1);
+  const [claimStatus, setClaimStatus] = useState(0);
   const [CongratsData, setCongratsData] = useState({
     WillNum: "500",
   });
   useEffect(() => {
+    if (!account) {
+      return;
+    }
+    const isWhiteAddress = whiteAddress.includes(account);
+    setClaimStatus(isWhiteAddress ? 1 : 0);
     setCongratsData({
       WillNum: "500",
     });
-  }, []);
+  }, [account]);
   const currentClass = (index: number) => {
     return currentLi === index ? (
       <MyStakeUl>
@@ -694,33 +683,35 @@ export default function Home() {
       </>
     ) : (
       <>
-        {" "}
-        <ClaimBox>
-          <Congrats>Congrats !</Congrats>
-          <CongratsImg src={congratsImgs} />
-          <CongratTest>
-            You are eligible for airdrop You will be able to claim your tokens!
-          </CongratTest>
-          <ClaimForm>
-            <Receive>
-              <Will>0xABB3…f8F7 will receive</Will>
-              <WillImgAndNum>
-                <WillNum>{CongratsData.WillNum}</WillNum>
-                <WillImg src={WillImgs} />
-              </WillImgAndNum>
-            </Receive>
-            <ClaimBtn onClick={claimToken}>Claim tokens</ClaimBtn>
-          </ClaimForm>
-        </ClaimBox>
-        {/* <SorryBox>
-          <Congrats>Sorry</Congrats>
-          <SorryTest>
-            You are not eligible for this airdrop round. Don’t worry! There will be more airdrops in
-            the future. The best way to improve your odds is to get involved. Start exploring
-            today:)
-          </SorryTest>
-          <SorryBtn>Exploring HOOK</SorryBtn>
-        </SorryBox>{" "} */}
+        {claimStatus === 0 ? (
+          <ClaimBox>
+            <Congrats>Congrats !</Congrats>
+            <CongratsImg src={congratsImgs} />
+            <CongratTest>
+              You are eligible for airdrop You will be able to claim your tokens!
+            </CongratTest>
+            <ClaimForm>
+              <Receive>
+                <Will>0xABB3…f8F7 will receive</Will>
+                <WillImgAndNum>
+                  <WillNum>{CongratsData.WillNum}</WillNum>
+                  <WillImg src={WillImgs} />
+                </WillImgAndNum>
+              </Receive>
+              <ClaimBtn onClick={claimToken}>Claim tokens</ClaimBtn>
+            </ClaimForm>
+          </ClaimBox>
+        ) : (
+          <SorryBox>
+            <Congrats>Sorry</Congrats>
+            <SorryTest>
+              You are not eligible for this airdrop round. Don’t worry! There will be more airdrops
+              in the future. The best way to improve your odds is to get involved. Start exploring
+              today:)
+            </SorryTest>
+            <SorryBtn>Exploring HOOK</SorryBtn>
+          </SorryBox>
+        )}
       </>
     );
   };
@@ -850,9 +841,6 @@ export default function Home() {
               Trade Bitcoin, Ethereum, USDT, and the top altcoins on the legendary crypto asset
               exchange.
             </Trade>
-            <StartedBtn>
-              Get Started <span className="iconfont">&#xeb08;</span>{" "}
-            </StartedBtn>
           </Column>
 
           <Column maxWidth={910}>
@@ -890,9 +878,7 @@ export default function Home() {
               <GetStartedBox>
                 <Looks>Total LOOKS helps you earn rewaarda.It’s neat.</Looks>
                 <Powers>Get the token that Powers LooksRare</Powers>
-                <StartedBtn>
-                  Get Started <span className="iconfont">&#xeb08;</span>{" "}
-                </StartedBtn>
+
                 <TheRates>
                   The rates shown on this page are only provided for your reference: APR and APY are
                   calculated based on current ROI. The actual rates will fluctuate a lot according

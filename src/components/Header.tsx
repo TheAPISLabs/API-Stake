@@ -96,6 +96,7 @@ const SAddress = styled.p<IHeaderStyle>`
   transition: ${transitions.base};
   font-weight: bold;
   margin: ${({ connected }) => (connected ? "-2px auto 0.7em" : "0")};
+  color: #fff;
 `;
 
 // const SUnsupportedChain = styled.div`
@@ -118,6 +119,7 @@ const SDisconnect = styled.div<IHeaderStyle>`
     // transform: translateY(-1px);
     opacity: 0.5;
   }
+  color: #fff;
 `;
 const SConnectButton = styled(Button as any)`
   border-radius: 8px;
@@ -127,6 +129,10 @@ const SConnectButton = styled(Button as any)`
   border-radius: 16px;
   width: 197px;
   height: 32px;
+  color: #fff;
+  & > div {
+    background: transparent !important;
+  }
 `;
 
 interface IHeaderProps {
