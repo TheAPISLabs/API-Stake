@@ -13,7 +13,7 @@ import styled from "styled-components";
 import { isMobile } from "src/helpers/utilities";
 import "./index.css";
 import congratsImgs from "../../assets/Congrats.gif";
-
+import WillImgs from "../../assets/APIS-logo 1.png";
 const StakingTitleApi = styled.p`
   font-weight: 500;
   font-size: 48px;
@@ -356,7 +356,9 @@ const ClaimForm = styled.div`
   justify-content: space-between;
   padding: 17px 32px;
 `;
-const Receive = styled.div``;
+const Receive = styled.div`
+  z-index: 100;
+`;
 const CongratsImg = styled.img`
   position: absolute;
   top: -11px;
@@ -403,6 +405,7 @@ const ClaimBtn = styled.div`
   text-align: center;
   line-height: 46px;
   cursor: pointer;
+  z-index: 100;
   &:hover {
     opacity: 0.5;
   }
@@ -514,6 +517,21 @@ const Link = styled.a`
   font-weight: 400;
   text-align: left;
   line-height: 24px;
+  &:hover {
+    // transform: translateY(-1px);
+    opacity: 0.5;
+  }
+`;
+const WillImgAndNum = styled.div`
+  display: flex;
+  align-items: center;
+`;
+const WillImg = styled.img`
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #fff;
+  margin-left: 24px;
 `;
 
 export default function Home() {
@@ -669,7 +687,10 @@ export default function Home() {
           <ClaimForm>
             <Receive>
               <Will>0xABB3…f8F7 will receive</Will>
-              <WillNum>{CongratsData.WillNum}</WillNum>
+              <WillImgAndNum>
+                <WillNum>{CongratsData.WillNum}</WillNum>
+                <WillImg src={WillImgs} />
+              </WillImgAndNum>
             </Receive>
             <ClaimBtn>Claim tokens</ClaimBtn>
           </ClaimForm>
