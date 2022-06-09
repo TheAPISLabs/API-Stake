@@ -705,7 +705,7 @@ export default function Home({ connected, killSession, connect, fetching }: IHom
       </>
     ) : (
       <>
-        {claimStatus === 0 ? (
+        {claimStatus === 2 ? (
           <ClaimBox>
             <Congrats>Congrats !</Congrats>
             <CongratsImg src={congratsImgs} />
@@ -723,7 +723,7 @@ export default function Home({ connected, killSession, connect, fetching }: IHom
               <ClaimBtn onClick={claimToken}>Claim tokens</ClaimBtn>
             </ClaimForm>
           </ClaimBox>
-        ) : claimStatus === 2 ? (
+        ) : claimStatus === 0 ? (
           <SorryBox>
             <Congrats>Welcome!</Congrats>
             <SorryTest>

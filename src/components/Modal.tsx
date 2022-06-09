@@ -98,6 +98,7 @@ const SCard = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #161426 !important;
 `;
 
 const SModalContent = styled.div`
@@ -169,7 +170,7 @@ class Modal extends React.Component<IModalProps, IModalState> {
           <SHitbox onClick={this.toggleModal} />
 
           <SCard>
-            <SCloseButton size={25} color={"dark"} onClick={this.toggleModal} />
+            <SCloseButton size={25} color={"white"} onClick={this.toggleModal} />
             <SModalContent>{children}</SModalContent>
           </SCard>
         </SModalContainer>
