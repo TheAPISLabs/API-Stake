@@ -24,6 +24,7 @@ import Button from "src/components/Button";
 import { fonts } from "src/styles";
 import { isMobile } from "src/helpers/utilities";
 import WalletModal from "src/components/WalletModal";
+import useAddTokenToMetamask from "src/hooks/useAddToken";
 
 const StakingTitleApi = styled.p`
   font-weight: 500;
@@ -660,7 +661,7 @@ export default function Home({ connected, killSession, connect, fetching }: IHom
   const [currentLi, setCurrentLi] = useState(1);
   const [claimStatus, setClaimStatus] = useState(0);
   const [isShowModal, setIsShowModal] = useState(false);
-
+  const { addToken } = useAddTokenToMetamask();
   const [CongratsData, setCongratsData] = useState({
     WillNum: "500",
   });
@@ -1169,7 +1170,13 @@ export default function Home({ connected, killSession, connect, fetching }: IHom
                   <BuyIcon className="iconfont">&#xe60f;</BuyIcon>
                 </BuyBoxBtn>
                 <AddToBtn>
-                  <AddTo>Add to Wallet</AddTo>
+                  <AddTo
+                    onClick={() => {
+                      addToken();
+                    }}
+                  >
+                    Add to Wallet
+                  </AddTo>
                   <BuyIcon className="iconfont">&#xe60d;</BuyIcon>
                 </AddToBtn>
               </BuyAndAddBox>
