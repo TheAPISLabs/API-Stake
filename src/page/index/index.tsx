@@ -13,7 +13,7 @@ import styled from "styled-components";
 import ContractAddress from "src/utils/contract";
 
 import "./index.css";
-import congratsImgs from "../../assets/Congrats.gif";
+// import congratsImgs from "../../assets/Congrats.gif";
 import WillImgs from "../../assets/APIS-logo 1.png";
 import { useConnect } from "src/hooks/useConnect.js";
 import ClaimContractAbi from "src/abi/Claim.js";
@@ -320,14 +320,14 @@ const ClaimBox = styled.div`
   width: 899px;
   height: 348px;
   border: 0.5px solid rgba(155, 155, 155, 0.3);
-  padding: 92px 33px 30px 56px;
+  padding: 52px 33px 30px 56px;
   position: relative;
 `;
 const SorryBox = styled.div`
   width: 899px;
   height: 348px;
   border: 0.5px solid rgba(155, 155, 155, 0.3);
-  padding: 92px 33px 30px 56px;
+  padding: 52px 33px 30px 56px;
 `;
 const Congrats = styled.p`
   color: rgba(252, 252, 253, 1);
@@ -708,7 +708,9 @@ export default function Home({ connected, killSession, connect, fetching }: IHom
         {claimStatus === 2 ? (
           <ClaimBox>
             <Congrats>Congrats !</Congrats>
-            <CongratsImg src={congratsImgs} />
+            <CongratsImg
+              src={"https://storage.googleapis.com/bimboss/hook_game_img/Congrats.gif"}
+            />
             <CongratTest>
               You are eligible for airdrop You will be able to claim your tokens!
             </CongratTest>
