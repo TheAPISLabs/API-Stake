@@ -28,6 +28,18 @@ const SHeader = styled.div`
   background: #161426;
 `;
 
+const MSHeader = styled.div`
+  margin-top: -1px;
+  width: 100%;
+  height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+
+  background: #161426;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+`;
 const SActiveAccount = styled.div`
   display: flex;
   align-items: center;
@@ -37,6 +49,9 @@ const SActiveAccount = styled.div`
 const AplImg = styled.img`
   width: 139px;
   height: 38px;
+`;
+const MAplImg = styled.img`
+  width: 100%;
 `;
 const DocsBox = styled.div`
   display: flex;
@@ -136,6 +151,19 @@ const SConnectButton = styled(Button as any)`
     background: transparent !important;
   }
 `;
+const MSConnectButton = styled(Button as any)`
+  border-radius: 8px;
+  font-size: ${fonts.size.medium};
+  margin: 12px 0;
+  background: #6639e5;
+  border-radius: 16px;
+  width: 140px;
+  height: 40px;
+  color: #fff;
+  & > div {
+    background: transparent !important;
+  }
+`;
 
 interface IHeaderProps {
   killSession: () => void;
@@ -162,19 +190,64 @@ const Header = ({ connected, killSession, connect, fetching }: IHeaderProps) => 
   //   };
 
   return isMobile() ? (
-    <></>
+    <>
+      <MSHeader>
+        {account ? (
+          <SActiveAccount>
+            <SBlockie address={account} />
+            {activeChain ? (
+              <SAddress connected={connected}>{ellipseAddress(account)}</SAddress>
+            ) : (
+              <SAddress connected={connected}>Chain not supported.</SAddress>
+            )}
+            <SDisconnect
+              connected={connected}
+              onClick={() => {
+                killSession();
+                deactivate();
+              }}
+            >
+              {activeChain} {"Disconnect"}
+            </SDisconnect>
+          </SActiveAccount>
+        ) : (
+          <>
+            <MSConnectButton
+              onClick={() => {
+                setIsShowModal(true);
+              }}
+            >
+              {" "}
+              {"Connect"}
+            </MSConnectButton>
+          </>
+        )}
+        <SActiveChain>
+          <a href="https://www.theapis.xyz/">
+            <MAplImg src="https://etherscan.io/token/images/theapis_32.png" />
+          </a>
+        </SActiveChain>
+
+        <WalletModal
+          setIsShowModal={setIsShowModal}
+          isShowModal={isShowModal}
+          connect={connect}
+          fetching={fetching}
+        />
+      </MSHeader>
+    </>
   ) : (
     <>
       <SHeader>
         <SActiveChain>
-          <>
+          <a href="https://www.theapis.xyz/">
             {/* <p>Connected to</p>
               <p>{activeChain}</p> */}
             {/* <SConnectButton onClick={claimToken} left fetching={fetching}>
             {"Claim"}
           </SConnectButton> */}
             <AplImg src={aplImgs} />
-          </>
+          </a>
         </SActiveChain>
         <DocsBox>
           <Staking>Staking</Staking>
