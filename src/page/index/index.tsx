@@ -428,7 +428,7 @@ const CongratTest = styled.p`
   font-weight: 400;
   margin: 0 auto;
   position: relative;
-  z-index: 1111;
+  z-index: 1;
 `;
 const SorryTest = styled.p`
   width: 300px;

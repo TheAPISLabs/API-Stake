@@ -39,7 +39,10 @@ const ArrowImage = styled.img`
   height: 14px;
 `;
 
-function MetamaskConnect(props: { triedEager: any }) {
+function MetamaskConnect(props: {
+  triedEager: any;
+  setIsShow: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
   const context = useWeb3React();
   const { connector, chainId, activate, deactivate, error } = context;
 
@@ -69,6 +72,7 @@ function MetamaskConnect(props: { triedEager: any }) {
         if (!isDisconnect) {
           setActivatingConnector(injected as any);
           activate(injected);
+          props.setIsShow(false);
         } else {
           deactivate();
         }

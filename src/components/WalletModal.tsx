@@ -83,8 +83,13 @@ const WalletModal = ({ isShowModal, connect, setIsShowModal, fetching }: IWallet
       }}
     >
       <ModalTitle>connect your wallet</ModalTitle>
-      <MetamaskConnect triedEager={triedEager} />
-      <SConnectButton onClick={connect}>
+      <MetamaskConnect setIsShow={setIsShowModal} triedEager={triedEager} />
+      <SConnectButton
+        onClick={() => {
+          connect();
+          setIsShowModal(false);
+        }}
+      >
         <WalletBoxLeft>
           <Image src={walletconnect} />
           {"connect"}
@@ -93,7 +98,7 @@ const WalletModal = ({ isShowModal, connect, setIsShowModal, fetching }: IWallet
           <ArrowImage src={rightArrow} />
         </WalletBoxRight>
       </SConnectButton>
-      <WalletText>More wallet options coming soon. Suggest a wallet</WalletText>
+      <WalletText>More wallet options coming soon.</WalletText>
     </Modal>
   );
 };
