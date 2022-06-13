@@ -38,13 +38,13 @@ const StakingTitleApi = styled.p`
 `;
 const MStakingTitleApi = styled.p`
   font-weight: 500;
-  font-size: 48px;
-  line-height: 58px;
+  font-size: 28px;
+  line-height: 35px;
   text-align: center;
-  width: 78px;
-  height: 58px;
+  width: 47px;
+  height: 35px;
   color: #fcfcfd;
-  margin-right: 22px;
+  margin-right: 9px;
 `;
 const StakingTitleStak = styled.p`
   font-weight: 500;
@@ -56,6 +56,16 @@ const StakingTitleStak = styled.p`
   height: 58px;
   margin-right: 15px;
 `;
+const MStakingTitleStak = styled.p`
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 35px;
+  text-align: center;
+  color: #827790;
+  width: 104px;
+  height: 35px;
+  margin-right: 13px;
+`;
 const StakingTitleDashboard = styled.p`
   font-weight: 500;
   font-size: 48px;
@@ -65,6 +75,15 @@ const StakingTitleDashboard = styled.p`
   width: 251px;
   height: 58px;
   margin-right: 15px;
+`;
+const MStakingTitleDashboard = styled.p`
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 35px;
+  text-align: center;
+  color: #fcfcfd;
+  width: 151px;
+  height: 35px;
 `;
 
 const Trade = styled.p`
@@ -160,8 +179,15 @@ const Msx = styled.div`
 const StakingWrap = styled.div`
   background: #161426;
 `;
+const MStakingWrap = styled.div`
+  background: #161426;
+`;
 const StakingTitle = styled.div`
   display: flex;
+`;
+const MStakingTitle = styled.div`
+  display: flex;
+  margin-top: 64px;
 `;
 const TOTALBox = styled.div`
   display: flex;
@@ -203,6 +229,10 @@ const StakeOrClaim = styled.div`
   height: 36px;
   margin-top: 105px;
   margin-left: -737px;
+`;
+const MStakeOrClaim = styled.div`
+  width: 125px;
+  height: 36px;
 `;
 const StakeOrClaimUl = styled.ul`
   display: flex;
@@ -349,6 +379,13 @@ const ClaimBox = styled.div`
   padding: 92px 33px 30px 56px;
   position: relative;
 `;
+const MClaimBox = styled.div`
+  height: 480px;
+  border-bottom: 0.5px solid rgba(155, 155, 155, 0.3);
+  padding: 92px 30px 0px 30px;
+  position: relative;
+`;
+
 const SorryBox = styled.div`
   width: 899px;
   height: 348px;
@@ -358,10 +395,25 @@ const SorryBox = styled.div`
     border: 0.5px solid #6639e5;
   }
 `;
+const MSorryBox = styled.div`
+  height: 480px;
+  border-bottom: 0.5px solid rgba(155, 155, 155, 0.3);
+  padding: 92px 30px 0px 30px;
+  position: relative;
+`;
 const Congrats = styled.p`
   color: rgba(252, 252, 253, 1);
   font-size: 36px;
-  font-weight: 400;
+  font-weight: 600;
+  text-align: center;
+  line-height: 24px;
+  position: relative;
+  z-index: 1;
+`;
+const MCongrats = styled.p`
+  color: rgba(252, 252, 253, 1);
+  font-size: 36px;
+  font-weight: 600;
   text-align: center;
   line-height: 24px;
   position: relative;
@@ -377,13 +429,43 @@ const ClaimForm = styled.div`
   justify-content: space-between;
   padding: 17px 32px;
 `;
+const MClaimForm = styled.div`
+  width: 297px;
+  height: 83px;
+  border: 1px solid #6639e5;
+  border-radius: 10px;
+  padding: 17px 32px;
+  margin: auto;
+  margin-top: 40px;
+`;
 const Receive = styled.div`
-  z-index: 100;
+  z-index: 1;
+  position: relative;
 `;
 const CongratsImg = styled.img`
   position: absolute;
   top: -11px;
   left: 106px;
+  z-index: 0;
+  width: 700px;
+  opacity: 0;
+  animation: fadenum 1.5s;
+  @keyframes fadenum {
+    0% {
+      opacity: 0;
+    }
+    99% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+`;
+const MCongratsImg = styled.img`
+  position: absolute;
+  top: -16px;
+  left: -162px;
   z-index: 0;
   width: 700px;
   opacity: 0;
@@ -432,6 +514,25 @@ const ClaimBtn = styled.div`
   }
   z-index: 100;
 `;
+const MClaimBtn = styled.div`
+  width: 198px;
+  height: 46px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(159, 107, 244, 1) 0%, rgba(102, 57, 229, 1) 100%);
+  color: rgba(255, 255, 255, 1);
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+  line-height: 46px;
+  cursor: pointer;
+  margin: auto;
+  margin-top: 80px;
+  z-index: 1;
+  position: relative;
+  &:hover {
+    opacity: 0.5;
+  }
+`;
 const SorryBtn = styled.div`
   width: 198px;
   height: 46px;
@@ -445,6 +546,24 @@ const SorryBtn = styled.div`
   cursor: pointer;
   margin: auto;
   margin-top: 38px;
+  &:hover {
+    transform: translateY(-1px);
+    opacity: 0.5;
+  }
+`;
+const MSorryBtn = styled.div`
+  width: 198px;
+  height: 46px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(159, 107, 244, 1) 0%, rgba(102, 57, 229, 1) 100%);
+  color: rgba(255, 255, 255, 1);
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+  line-height: 46px;
+  cursor: pointer;
+  margin: auto;
+  margin-top: 51px;
   &:hover {
     transform: translateY(-1px);
     opacity: 0.5;
@@ -466,15 +585,31 @@ const SorryTest = styled.div`
   font-weight: 400;
   margin: 0 auto;
 `;
+const MSorryTest = styled.div`
+  width: 307px;
+  color: rgba(119, 126, 144, 1);
+  font-size: 12px;
+  font-weight: 400;
+  margin: 0 auto;
+`;
 const FoodBox = styled.div`
   width: 100%;
   background: #1c1930;
   margin-top: 275px;
   padding: 87px;
 `;
+const MFoodBox = styled.div`
+  width: 100%;
+  background: #1c1930;
+`;
 const GetStartedBox = styled.div`
   margin: 0 auto;
   width: 1023px;
+  border-bottom: 1px solid rgba(50, 46, 75, 1);
+`;
+const MGetStartedBox = styled.div`
+  margin: 0 auto;
+  padding-bottom: 20px;
   border-bottom: 1px solid rgba(50, 46, 75, 1);
 `;
 const Looks = styled.p`
@@ -484,6 +619,7 @@ const Looks = styled.p`
   text-align: center;
   line-height: 16px;
   margin-bottom: 28px;
+  margin-top: 88px;
 `;
 
 const Powers = styled.p`
@@ -503,6 +639,14 @@ const TheRates = styled.div`
   line-height: 14.2px;
   margin-top: 58px;
 `;
+const MTheRates = styled.div`
+  width: 374px;
+  color: rgba(155, 155, 155, 1);
+  font-size: 11px;
+  font-weight: 400;
+  margin: 0 auto;
+  line-height: 14.2px;
+`;
 const TheRat = styled.div`
   width: 815px;
   height: 29px;
@@ -518,9 +662,15 @@ const CopyrightBox = styled.div`
   width: 1023px;
   padding-top: 58px;
 `;
+const MCopyrightBox = styled.div`
+  margin: 0 auto;
+  width: 299px;
+  padding-top: 45px;
+`;
 const CopyrightTitle = styled.div`
   display: flex;
 `;
+const MCopyrightTitle = styled.div``;
 const Copyright = styled.p`
   color: rgba(152, 158, 172, 1);
   font-size: 12px;
@@ -528,6 +678,16 @@ const Copyright = styled.p`
   text-align: left;
   line-height: 24px;
   margin-right: 20px;
+  margin-bottom: 30px;
+`;
+const MCopyright = styled.p`
+  color: rgba(152, 158, 172, 1);
+  font-size: 12px;
+  font-weight: 400;
+  text-align: left;
+  line-height: 24px;
+  margin-right: 20px;
+  margin-bottom: 30px;
 `;
 const Blockchains = styled.p`
   color: rgba(152, 158, 172, 1);
@@ -536,10 +696,29 @@ const Blockchains = styled.p`
   text-align: left;
   line-height: 24px;
 `;
+const MBlockchains = styled.p`
+  color: rgba(152, 158, 172, 1);
+  font-size: 12px;
+  font-weight: 400;
+  text-align: left;
+  line-height: 24px;
+  margin-bottom: 20px;
+`;
 const LinkBox = styled.div`
   display: flex;
   justify-content: space-between;
   width: 569px;
+`;
+const MLinkBox = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 299px;
+`;
+const MXLinkBox = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 299px;
+  margin-bottom: 39px;
 `;
 const Link = styled.a`
   color: rgba(195, 177, 246, 1);
@@ -556,12 +735,24 @@ const WillImgAndNum = styled.div`
   display: flex;
   align-items: center;
 `;
+const MWillImgAndNum = styled.div`
+  display: flex;
+  justify-content: space-around;
+  margin: auto;
+  width: 147px;
+`;
 const WillImg = styled.img`
   width: 25px;
   height: 25px;
   border-radius: 50%;
   background: #fff;
-  margin-left: 24px;
+`;
+const MWillImg = styled.img`
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #fff;
+  margin-top: 3px;
 `;
 const SConnectButton = styled(Button as any)`
   border-radius: 8px;
@@ -571,6 +762,19 @@ const SConnectButton = styled(Button as any)`
   border-radius: 16px;
   width: 197px;
   height: 32px;
+  color: #fff;
+  & > div {
+    background: transparent !important;
+  }
+`;
+const MSConnectButton = styled(Button as any)`
+  border-radius: 8px;
+  font-size: ${fonts.size.large};
+  margin: 80px 0;
+  background: linear-gradient(180deg, rgba(159, 107, 244, 1) 0%, rgba(102, 57, 229, 1) 100%);
+  border-radius: 18px;
+  width: 198px;
+  height: 46px;
   color: #fff;
   & > div {
     background: transparent !important;
@@ -595,6 +799,13 @@ const BuyAndAddBox = styled.div`
   margin: auto;
   display: flex;
   justify-content: space-between;
+`;
+const MBuyAndAddBox = styled.div`
+  width: 327px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 48px;
 `;
 const BuyBoxBtn = styled.a`
   border: 1px solid #787879;
@@ -814,13 +1025,14 @@ export default function Home({ connected, killSession, connect, fetching }: IHom
       <>
         {claimStatus === 2 ? (
           <ClaimBox>
-            <Congrats>Congrats !</Congrats>
+            <Congrats>
+              <i>Congrats !</i>
+            </Congrats>
             <CongratsImg
               src={"https://storage.googleapis.com/bimboss/hook_game_img/Congrats.gif"}
             />
-            <CongratTest>
-              You are eligible for airdrop You will be able to claim your tokens!
-            </CongratTest>
+            <CongratTest>You are eligible for airdrop </CongratTest>
+            <CongratTest>You will be able to claim your tokens!</CongratTest>
             <ClaimForm>
               <Receive>
                 <Will>0xABB3…f8F7 will receive</Will>
@@ -834,7 +1046,9 @@ export default function Home({ connected, killSession, connect, fetching }: IHom
           </ClaimBox>
         ) : claimStatus === 0 ? (
           <SorryBox>
-            <Congrats>Welcome!</Congrats>
+            <Congrats>
+              <i>Welcome!</i>
+            </Congrats>
             <SorryTest>
               Connect your wallet and check your eligibility for claiming tokens!
             </SorryTest>
@@ -849,7 +1063,9 @@ export default function Home({ connected, killSession, connect, fetching }: IHom
           </SorryBox>
         ) : (
           <SorryBox>
-            <Congrats>Sorry</Congrats>
+            <Congrats>
+              <i>Sorry</i>
+            </Congrats>
             <SorryTest>You are not eligible for this airdrop round. Don’t worry!</SorryTest>
             <SorryTest>There will be more airdrops in the future.</SorryTest>
             <SorryTest>
@@ -972,50 +1188,54 @@ export default function Home({ connected, killSession, connect, fetching }: IHom
     ) : (
       <>
         {claimStatus === 2 ? (
-          <ClaimBox>
-            <Congrats>Congrats !</Congrats>
-            <CongratsImg
+          <MClaimBox>
+            <MCongrats>
+              <i>Congrats !</i>
+            </MCongrats>
+            <MCongratsImg
               src={"https://storage.googleapis.com/bimboss/hook_game_img/Congrats.gif"}
             />
-            <CongratTest>
-              You are eligible for airdrop You will be able to claim your tokens!
-            </CongratTest>
-            <ClaimForm>
+            <CongratTest>You are eligible for airdrop </CongratTest>
+            <CongratTest>You will be able to claim your tokens!</CongratTest>
+            <MClaimBtn onClick={claimToken}>Claim tokens</MClaimBtn>
+            <MClaimForm>
               <Receive>
                 <Will>0xABB3…f8F7 will receive</Will>
-                <WillImgAndNum>
+                <MWillImgAndNum>
                   <WillNum>{CongratsData.WillNum}</WillNum>
-                  <WillImg src={WillImgs} />
-                </WillImgAndNum>
+                  <MWillImg src={WillImgs} />
+                </MWillImgAndNum>
               </Receive>
-              <ClaimBtn onClick={claimToken}>Claim tokens</ClaimBtn>
-            </ClaimForm>
-          </ClaimBox>
+            </MClaimForm>
+          </MClaimBox>
         ) : claimStatus === 0 ? (
-          <SorryBox>
-            <Congrats>Welcome!</Congrats>
-            <SorryTest>
+          <MSorryBox>
+            <Congrats>
+              <i>Welcome!</i>
+            </Congrats>
+            <MSorryTest>
               Connect your wallet and check your eligibility for claiming tokens!
-            </SorryTest>
-            <SConnectButton
+            </MSorryTest>
+            <MSConnectButton
               onClick={() => {
                 setIsShowModal(true);
               }}
               fetching={fetching}
             >
               Connect Wallet
-            </SConnectButton>
-          </SorryBox>
+            </MSConnectButton>
+          </MSorryBox>
         ) : (
-          <SorryBox>
-            <Congrats>Sorry</Congrats>
-            <SorryTest>You are not eligible for this airdrop round. Don’t worry!</SorryTest>
-            <SorryTest>There will be more airdrops in the future.</SorryTest>
-            <SorryTest>
-              The best way to improve your odds is to get involved. Start exploring today:)
-            </SorryTest>
-            <SorryBtn>Exploring HOOK</SorryBtn>
-          </SorryBox>
+          <MSorryBox>
+            <Congrats>
+              <i>Sorry</i>
+            </Congrats>
+            <MSorryTest>You are not eligible for this airdrop round.</MSorryTest>
+            <MSorryTest> Don’t worry!There will be more airdrops in the future.</MSorryTest>
+            <MSorryTest>The best way to improve your odds is to get involved.</MSorryTest>
+            <MSorryTest>Start exploring today:)</MSorryTest>
+            <MSorryBtn>Exploring HOOK</MSorryBtn>
+          </MSorryBox>
         )}
         <WalletModal
           isShowModal={isShowModal}
@@ -1029,10 +1249,104 @@ export default function Home({ connected, killSession, connect, fetching }: IHom
   return isMobile() ? (
     <>
       {" "}
-      <StakingWrap>
+      <MStakingWrap>
         <Column maxWidth={375}>
-          <StakingTitle>
+          <MStakingTitle>
             <MStakingTitleApi>API</MStakingTitleApi>
+            <MStakingTitleStak>Rewards</MStakingTitleStak>
+            <MStakingTitleDashboard>Dashboard</MStakingTitleDashboard>
+          </MStakingTitle>
+          <Trade>Earn API by staking and more. </Trade>
+        </Column>
+
+        <Column maxWidth={327}>
+          <MStakeOrClaim>
+            <StakeOrClaimUl>
+              <StakeOrClaimLiS
+                onClick={() => {
+                  return;
+                  //   setMStakeOrClaimLi(1);
+                }}
+                style={{
+                  borderBottom: StakeOrClaimLi === 1 ? " 2px solid rgb(104, 99, 212)" : "",
+                  color: StakeOrClaimLi === 1 ? "#6863D4" : "#777E90",
+                }}
+              >
+                Stake
+              </StakeOrClaimLiS>
+              <StakeOrClaimLiSe
+                onClick={() => {
+                  setMStakeOrClaimLi(2);
+                }}
+                style={{
+                  borderBottom: StakeOrClaimLi === 2 ? " 2px solid rgb(104, 99, 212)" : "",
+                  color: StakeOrClaimLi === 2 ? "#6863D4" : "#777E90",
+                }}
+              >
+                Claim
+              </StakeOrClaimLiSe>
+            </StakeOrClaimUl>
+          </MStakeOrClaim>
+          {MStakeOrClaimClass(1)}
+        </Column>
+        <Column maxWidth="100vw">
+          <MFoodBox>
+            <MGetStartedBox>
+              <Looks>Rewards for API token holders accumulating.</Looks>
+              <Powers> Get the API token </Powers>
+              <MBuyAndAddBox>
+                <BuyBoxBtn href="https://www.mexc.com/exchange/API_USDT">
+                  <BuyLook>Buy LOOKS</BuyLook>
+                  <BuyIcon className="iconfont">&#xe60f;</BuyIcon>
+                </BuyBoxBtn>
+                <AddToBtn>
+                  <AddTo>Add to Wallet</AddTo>
+                  <BuyIcon className="iconfont">&#xe60d;</BuyIcon>
+                </AddToBtn>
+              </MBuyAndAddBox>
+              <MTheRates>
+                The rates shown on this page are only provided for your reference:
+              </MTheRates>
+              <MTheRates>APR and APY are calculated based on current ROI.</MTheRates>
+              <MTheRates>
+                The actual rates will fluctuate a lot according to many different
+              </MTheRates>
+              <MTheRates>
+                factors, including token prices, trading volume, liquidity, amount staked, and more.
+              </MTheRates>
+            </MGetStartedBox>
+            <MCopyrightBox>
+              <MCopyrightTitle>
+                <MCopyright>Copyright 2022 Hook</MCopyright>
+                <MBlockchains>One-stop Data Analysis For All Blockchains.</MBlockchains>
+              </MCopyrightTitle>
+              <MLinkBox>
+                <Link href="https://app.gitbook.com/o/dHoRYUVnGdpDW6kzvwKH/s/8MYNEydsCb1yG0qhMpJZ/products/hook">
+                  About
+                </Link>
+                <Link href="/licenses">API</Link>
+                <Link href="https://simmmple.com/terms-of-service">Contact</Link>
+                <Link href="https://www.blog.simmmple.com/">Help</Link>
+                <Link href="https://www.blog.simmmple.com/">Jobs</Link>
+              </MLinkBox>
+              <MXLinkBox>
+                <Link href="https://www.blog.simmmple.com/">Bug Bounty</Link>
+                <Link href="">Brand</Link>
+                <Link href="https://app.gitbook.com/o/dHoRYUVnGdpDW6kzvwKH/s/8MYNEydsCb1yG0qhMpJZ/docs/terms-and-conditions">
+                  Terms of Service
+                </Link>
+              </MXLinkBox>
+            </MCopyrightBox>
+          </MFoodBox>
+        </Column>
+      </MStakingWrap>
+    </>
+  ) : (
+    <>
+      <StakingWrap>
+        <Column maxWidth={1000}>
+          <StakingTitle>
+            <StakingTitleApi>API</StakingTitleApi>
             <StakingTitleStak>Rewards</StakingTitleStak>
             <StakingTitleDashboard>Dashboard</StakingTitleDashboard>
           </StakingTitle>
@@ -1068,96 +1382,6 @@ export default function Home({ connected, killSession, connect, fetching }: IHom
             </StakeOrClaimUl>
           </StakeOrClaim>
           {StakeOrClaimClass(1)}
-        </Column>
-        <Column maxWidth="100vw">
-          <FoodBox>
-            <GetStartedBox>
-              <Looks>Rewards for API token holders accumulating.</Looks>
-              <Powers> Get the API token </Powers>
-              <BuyAndAddBox>
-                <BuyBoxBtn href="https://www.mexc.com/exchange/API_USDT">
-                  <BuyLook>Buy LOOKS</BuyLook>
-                  <BuyIcon className="iconfont">&#xe60f;</BuyIcon>
-                </BuyBoxBtn>
-                <AddToBtn>
-                  <AddTo>Add to Wallet</AddTo>
-                  <BuyIcon className="iconfont">&#xe60d;</BuyIcon>
-                </AddToBtn>
-              </BuyAndAddBox>
-              <TheRates>
-                The rates shown on this page are only provided for your reference: APR and APY are
-                calculated based on current ROI.
-              </TheRates>
-              <TheRat>
-                The actual rates will fluctuate a lot according to many different factors, including
-                token prices, trading volume, liquidity, amount staked, and more.
-              </TheRat>
-            </GetStartedBox>
-            <CopyrightBox>
-              <CopyrightTitle>
-                <Copyright>Copyright 2022 Hook</Copyright>
-                <Blockchains>One-stop Data Analysis For All Blockchains.</Blockchains>
-              </CopyrightTitle>
-              <LinkBox>
-                <Link href="https://app.gitbook.com/o/dHoRYUVnGdpDW6kzvwKH/s/8MYNEydsCb1yG0qhMpJZ/products/hook">
-                  About
-                </Link>
-                <Link href="/licenses">API</Link>
-                <Link href="https://simmmple.com/terms-of-service">Contact</Link>
-                <Link href="https://www.blog.simmmple.com/">Help</Link>
-                <Link href="https://www.blog.simmmple.com/">Jobs</Link>
-                <Link href="https://www.blog.simmmple.com/">Bug Bounty</Link>
-                <Link href="">Brand</Link>
-                <Link href="https://app.gitbook.com/o/dHoRYUVnGdpDW6kzvwKH/s/8MYNEydsCb1yG0qhMpJZ/docs/terms-and-conditions">
-                  Terms of Service
-                </Link>
-              </LinkBox>
-            </CopyrightBox>
-          </FoodBox>
-        </Column>
-      </StakingWrap>
-    </>
-  ) : (
-    <>
-      <StakingWrap>
-        <Column maxWidth={1000}>
-          <StakingTitle>
-            <StakingTitleApi>API</StakingTitleApi>
-            <StakingTitleStak>Rewards</StakingTitleStak>
-            <StakingTitleDashboard>Dashboard</StakingTitleDashboard>
-          </StakingTitle>
-          <Trade>Earn API by staking and more. </Trade>
-        </Column>
-
-        <Column maxWidth={910}>
-          <StakeOrClaim>
-            <StakeOrClaimUl>
-              <StakeOrClaimLiS
-                onClick={() => {
-                  //   return;
-                  setMStakeOrClaimLi(1);
-                }}
-                style={{
-                  borderBottom: StakeOrClaimLi === 1 ? " 2px solid rgb(104, 99, 212)" : "",
-                  color: StakeOrClaimLi === 1 ? "#6863D4" : "#777E90",
-                }}
-              >
-                Stake
-              </StakeOrClaimLiS>
-              <StakeOrClaimLiSe
-                onClick={() => {
-                  setMStakeOrClaimLi(2);
-                }}
-                style={{
-                  borderBottom: StakeOrClaimLi === 2 ? " 2px solid rgb(104, 99, 212)" : "",
-                  color: StakeOrClaimLi === 2 ? "#6863D4" : "#777E90",
-                }}
-              >
-                Claim
-              </StakeOrClaimLiSe>
-            </StakeOrClaimUl>
-          </StakeOrClaim>
-          {MStakeOrClaimClass(1)}
         </Column>
         <Column maxWidth="100vw">
           <FoodBox>
