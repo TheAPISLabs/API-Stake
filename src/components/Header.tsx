@@ -4,6 +4,7 @@ import Blockie from "./Blockie";
 import { ellipseAddress, getChainData } from "../helpers/utilities";
 import { fonts, transitions } from "../styles";
 import Button from "./Button";
+import { isMobile } from "../../src/helpers/utilities";
 // import ContractAddress from "src/utils/contract";
 // import ClaimAbi from "../abi/Claim.js";
 // import { useConnect } from "src/hooks/useConnect.js";
@@ -160,56 +161,59 @@ const Header = ({ connected, killSession, connect, fetching }: IHeaderProps) => 
   //     ClaimContract.methods.claimTokens().send({ from: account });
   //   };
 
-  return (
-    <SHeader>
-      <SActiveChain>
-        <>
-          {/* <p>Connected to</p>
+  return isMobile() ? (
+    <></>
+  ) : (
+    <>
+      <SHeader>
+        <SActiveChain>
+          <>
+            {/* <p>Connected to</p>
               <p>{activeChain}</p> */}
-          {/* <SConnectButton onClick={claimToken} left fetching={fetching}>
+            {/* <SConnectButton onClick={claimToken} left fetching={fetching}>
             {"Claim"}
           </SConnectButton> */}
-          <AplImg src={aplImgs} />
-        </>
-      </SActiveChain>
-      <DocsBox>
-        <Staking>Staking</Staking>
-        <Point>·</Point>
-        <Docs>Docs</Docs>
-        <Point>·</Point>
-        <Govern>Govern</Govern>
-      </DocsBox>
-      {account ? (
-        <SActiveAccount>
-          <SBlockie address={account} />
-          {activeChain ? (
-            <SAddress connected={connected}>{ellipseAddress(account)}</SAddress>
-          ) : (
-            <SAddress connected={connected}>Chain not supported.</SAddress>
-          )}
-          <SDisconnect
-            connected={connected}
-            onClick={() => {
-              killSession();
-              deactivate();
-            }}
-          >
-            {activeChain} {"Disconnect"}
-          </SDisconnect>
-        </SActiveAccount>
-      ) : (
-        <>
-          <SConnectButton
-            onClick={() => {
-              setIsShowModal(true);
-            }}
-          >
-            {" "}
-            {"Connect"}
-          </SConnectButton>
-        </>
-      )}
-      {/* <Modal
+            <AplImg src={aplImgs} />
+          </>
+        </SActiveChain>
+        <DocsBox>
+          <Staking>Staking</Staking>
+          <Point>·</Point>
+          <Docs>Docs</Docs>
+          <Point>·</Point>
+          <Govern>Govern</Govern>
+        </DocsBox>
+        {account ? (
+          <SActiveAccount>
+            <SBlockie address={account} />
+            {activeChain ? (
+              <SAddress connected={connected}>{ellipseAddress(account)}</SAddress>
+            ) : (
+              <SAddress connected={connected}>Chain not supported.</SAddress>
+            )}
+            <SDisconnect
+              connected={connected}
+              onClick={() => {
+                killSession();
+                deactivate();
+              }}
+            >
+              {activeChain} {"Disconnect"}
+            </SDisconnect>
+          </SActiveAccount>
+        ) : (
+          <>
+            <SConnectButton
+              onClick={() => {
+                setIsShowModal(true);
+              }}
+            >
+              {" "}
+              {"Connect"}
+            </SConnectButton>
+          </>
+        )}
+        {/* <Modal
         show={isShowModal}
         opacity={0.2}
         toggleModal={() => {
@@ -221,13 +225,14 @@ const Header = ({ connected, killSession, connect, fetching }: IHeaderProps) => 
           {"Connect"}
         </SConnectButton>
       </Modal> */}
-      <WalletModal
-        setIsShowModal={setIsShowModal}
-        isShowModal={isShowModal}
-        connect={connect}
-        fetching={fetching}
-      />
-    </SHeader>
+        <WalletModal
+          setIsShowModal={setIsShowModal}
+          isShowModal={isShowModal}
+          connect={connect}
+          fetching={fetching}
+        />
+      </SHeader>
+    </>
   );
 };
 

@@ -22,9 +22,20 @@ import { useWeb3React } from "@web3-react/core";
 import whiteAddress from "src/commen/whiteList.js";
 import Button from "src/components/Button";
 import { fonts } from "src/styles";
+import { isMobile } from "src/helpers/utilities";
 import WalletModal from "src/components/WalletModal";
 
 const StakingTitleApi = styled.p`
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 58px;
+  text-align: center;
+  width: 78px;
+  height: 58px;
+  color: #fcfcfd;
+  margin-right: 22px;
+`;
+const MStakingTitleApi = styled.p`
   font-weight: 500;
   font-size: 48px;
   line-height: 58px;
@@ -40,7 +51,7 @@ const StakingTitleStak = styled.p`
   line-height: 58px;
   text-align: center;
   color: #827790;
-  width: 174px;
+  width: 197px;
   height: 58px;
   margin-right: 15px;
 `;
@@ -49,7 +60,7 @@ const StakingTitleDashboard = styled.p`
   font-size: 48px;
   line-height: 58px;
   text-align: center;
-  color: #827790;
+  color: #fcfcfd;
   width: 251px;
   height: 58px;
   margin-right: 15px;
@@ -81,6 +92,9 @@ const MyStaking = styled.div`
   opacity: 1;
   border: 0.5px solid rgba(155, 155, 155, 0.3);
   background: rgba(13, 10, 36, 1);
+  &:hover {
+    border: 0.5px solid #6639e5;
+  }
 `;
 const MyStakingTitle = styled.p`
   color: rgba(252, 252, 253, 1);
@@ -187,6 +201,7 @@ const StakeOrClaim = styled.div`
   width: 125px;
   height: 36px;
   margin-top: 105px;
+  margin-left: -737px;
 `;
 const StakeOrClaimUl = styled.ul`
   display: flex;
@@ -234,6 +249,9 @@ const TotalStakedBox = styled.div`
   border: 0.5px solid rgba(155, 155, 155, 0.3);
   padding: 15px 8px 13px 26px;
   margin-bottom: 20px;
+  &:hover {
+    border: 0.5px solid #6639e5;
+  }
 `;
 const TotalStakedBoxTitle = styled.div`
   color: rgba(252, 252, 253, 1);
@@ -294,6 +312,9 @@ const APIPriceBox = styled.div`
   padding: 20px 26px;
   border-radius: 10px;
   margin-bottom: 21px;
+  &:hover {
+    border: 0.5px solid #6639e5;
+  }
 `;
 const APIPriceTitle = styled.div`
   color: rgba(155, 155, 155, 1);
@@ -301,6 +322,7 @@ const APIPriceTitle = styled.div`
   font-weight: 400;
   text-align: left;
   line-height: 20px;
+  margin-right: 22px;
 `;
 const DAILYTitle = styled.div`
   color: rgba(255, 255, 255, 1);
@@ -320,14 +342,20 @@ const ClaimBox = styled.div`
   width: 899px;
   height: 348px;
   border: 0.5px solid rgba(155, 155, 155, 0.3);
-  padding: 52px 33px 30px 56px;
+  &:hover {
+    border: 0.5px solid #6639e5;
+  }
+  padding: 92px 33px 30px 56px;
   position: relative;
 `;
 const SorryBox = styled.div`
   width: 899px;
   height: 348px;
   border: 0.5px solid rgba(155, 155, 155, 0.3);
-  padding: 52px 33px 30px 56px;
+  padding: 92px 33px 30px 56px;
+  &:hover {
+    border: 0.5px solid #6639e5;
+  }
 `;
 const Congrats = styled.p`
   color: rgba(252, 252, 253, 1);
@@ -413,9 +441,9 @@ const SorryBtn = styled.div`
   font-weight: 500;
   text-align: center;
   line-height: 46px;
-  margin-top: 38px;
   cursor: pointer;
-  float: right;
+  margin: auto;
+  margin-top: 38px;
   &:hover {
     transform: translateY(-1px);
     opacity: 0.5;
@@ -430,8 +458,8 @@ const CongratTest = styled.p`
   position: relative;
   z-index: 1;
 `;
-const SorryTest = styled.p`
-  width: 300px;
+const SorryTest = styled.div`
+  width: 436px;
   color: rgba(119, 126, 144, 1);
   font-size: 12px;
   font-weight: 400;
@@ -465,15 +493,23 @@ const Powers = styled.p`
   line-height: 16px;
   margin-bottom: 26px;
 `;
-const TheRates = styled.p`
+const TheRates = styled.div`
   width: 758px;
-  height: 29px;
   color: rgba(155, 155, 155, 1);
   font-size: 11px;
   font-weight: 400;
   margin: 0 auto;
   line-height: 14.2px;
   margin-top: 58px;
+`;
+const TheRat = styled.div`
+  width: 815px;
+  height: 29px;
+  color: rgba(155, 155, 155, 1);
+  font-size: 11px;
+  font-weight: 400;
+  margin: 0 auto;
+  line-height: 14.2px;
   margin-bottom: 62px;
 `;
 const CopyrightBox = styled.div`
@@ -539,6 +575,72 @@ const SConnectButton = styled(Button as any)`
     background: transparent !important;
   }
 `;
+const APIBox = styled.div`
+  display: flex;
+  align-items: center;
+`;
+const APINum = styled.div`
+  color: rgba(252, 252, 253, 1);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 24px;
+  width: 58px;
+  height: 24px;
+  border-radius: 24px;
+  background: rgba(255, 104, 56, 1);
+`;
+const BuyAndAddBox = styled.div`
+  width: 323px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+`;
+const BuyBoxBtn = styled.a`
+  border: 1px solid #787879;
+  border-radius: 4px;
+  width: 144px;
+  height: 40px;
+  display: flex;
+  justify-content: space-around;
+  padding: 0px 24px;
+  cursor: pointer;
+  &:hover {
+    border: 0.5px solid #6639e5;
+  }
+`;
+const AddToBtn = styled.a`
+  border: 1px solid #787879;
+  border-radius: 4px;
+  width: 144px;
+  height: 40px;
+  display: flex;
+  justify-content: space-around;
+  padding: 0px 18px;
+  cursor: pointer;
+  &:hover {
+    border: 0.5px solid #6639e5;
+  }
+`;
+const BuyLook = styled.div`
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 40px;
+  text-align: center;
+  color: #ffffff;
+`;
+const AddTo = styled.div`
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 40px;
+  text-align: center;
+  color: #ffffff;
+`;
+const BuyIcon = styled.div`
+  color: #ffffff;
+  font-size: 16px;
+  line-height: 40px;
+`;
+
 interface IHome {
   killSession: () => void;
   connected: boolean;
@@ -689,7 +791,11 @@ export default function Home({ connected, killSession, connect, fetching }: IHom
           </Column>
           <Column maxWidth={279}>
             <APIPriceBox>
-              <APIPriceTitle>API Price</APIPriceTitle>
+              <APIBox>
+                <APIPriceTitle>API Price</APIPriceTitle>
+                <APINum>-0.79%</APINum>
+              </APIBox>
+
               <APIPriceNum>$29.24</APIPriceNum>
             </APIPriceBox>
             <APIPriceBox>
@@ -743,10 +849,10 @@ export default function Home({ connected, killSession, connect, fetching }: IHom
         ) : (
           <SorryBox>
             <Congrats>Sorry</Congrats>
+            <SorryTest>You are not eligible for this airdrop round. Don’t worry!</SorryTest>
+            <SorryTest>There will be more airdrops in the future.</SorryTest>
             <SorryTest>
-              You are not eligible for this airdrop round. Don’t worry! There will be more airdrops
-              in the future. The best way to improve your odds is to get involved. Start exploring
-              today:)
+              The best way to improve your odds is to get involved. Start exploring today:)
             </SorryTest>
             <SorryBtn>Exploring HOOK</SorryBtn>
           </SorryBox>
@@ -760,19 +866,176 @@ export default function Home({ connected, killSession, connect, fetching }: IHom
       </>
     );
   };
-  return (
+  const [MStakeOrClaimLi, setMStakeOrClaimLi] = useState(2);
+  const MStakeOrClaimClass = (index: number) => {
+    return MStakeOrClaimLi === index ? (
+      <>
+        <Row>
+          <Column maxWidth={301}>
+            <MyStaking>
+              <MyStakingTitle>My API Staking</MyStakingTitle>
+              <MyStakingUl>
+                <MyStakingLi
+                  onClick={() => {
+                    setCurrentLi(1);
+                  }}
+                  style={{
+                    backgroundColor: currentLi === 1 ? "rgba(102,57,229,1)" : "rgba(13,10,36,1)",
+                    color: currentLi === 1 ? "#FFFFFF" : "#9691B5",
+                  }}
+                >
+                  Stake
+                </MyStakingLi>
+                <MyStakingLi
+                  onClick={() => {
+                    setCurrentLi(2);
+                  }}
+                  style={{
+                    backgroundColor: currentLi === 2 ? "rgba(102,57,229,1)" : "rgba(13,10,36,1)",
+                    color: currentLi === 2 ? "#FFFFFF" : "#9691B5",
+                  }}
+                >
+                  Unstake
+                </MyStakingLi>
+              </MyStakingUl>
+              {currentClass(1)}
+              <TOTALBox>
+                <TotalStaked>
+                  <TOTALSTAKEDTitle>TOTAL STAKED</TOTALSTAKEDTitle>
+                  <TotalNumBox>
+                    <TotalNum>0</TotalNum>
+                    <TotalApi>API~$0.00</TotalApi>
+                  </TotalNumBox>
+                </TotalStaked>
+                <AVAILAABLE>
+                  <TOTALSTAKEDTitle>AVAILAABLE IN WALLET</TOTALSTAKEDTitle>
+                  <TotalNumBox>
+                    <TotalNum>112</TotalNum>
+                    <TotalApi>API~$0.00</TotalApi>
+                  </TotalNumBox>
+                </AVAILAABLE>
+              </TOTALBox>
+              <PENDING>
+                <AVAILAABLE>
+                  <TOTALSTAKEDTitle>AVAILAABLE IN WALLET</TOTALSTAKEDTitle>
+                  <TotalNumBox>
+                    <TotalNum>0</TotalNum>
+                    <TotalApi>API~$0.00</TotalApi>
+                  </TotalNumBox>
+                </AVAILAABLE>
+                <NextClaim>
+                  <NextClaimIn>Next claim in</NextClaimIn>
+                  <Blocks>5636346 blocks</Blocks>
+                </NextClaim>
+              </PENDING>
+            </MyStaking>
+          </Column>
+          <Column maxWidth={279}>
+            <TotalStakedBox>
+              <TotalStakedBoxTitle>Total Staked</TotalStakedBoxTitle>
+              <BTCUSDT>BTC/USDT</BTCUSDT>
+              <Btc>
+                <AxsNum>36,641.20</AxsNum>
+                <Axs>AXS</Axs>
+              </Btc>
+
+              <AxsNums>36,641.20</AxsNums>
+            </TotalStakedBox>
+            <TotalStakedBox>
+              <TotalStakedBoxTitle>Estimated Rewards</TotalStakedBoxTitle>
+              <BTCUSDTS>BTC/USDT</BTCUSDTS>
+              <AxsNum>75%</AxsNum>
+              <AxsNums>APR</AxsNums>
+            </TotalStakedBox>
+          </Column>
+          <Column maxWidth={279}>
+            <APIPriceBox>
+              <APIBox>
+                <APIPriceTitle>API Price</APIPriceTitle>
+                <APINum>-0.79%</APINum>
+              </APIBox>
+
+              <APIPriceNum>$29.24</APIPriceNum>
+            </APIPriceBox>
+            <APIPriceBox>
+              <DAILYTitle>DAILY REWARDS</DAILYTitle>
+              <APIPriceNum>36,641.20 AXS</APIPriceNum>
+            </APIPriceBox>
+            <APIPriceBox>
+              <APIPriceTitle>CIRCULATING SUPPLY</APIPriceTitle>
+              <APIPriceNum>36,641.20 AXS</APIPriceNum>
+            </APIPriceBox>
+          </Column>
+        </Row>
+      </>
+    ) : (
+      <>
+        {claimStatus === 2 ? (
+          <ClaimBox>
+            <Congrats>Congrats !</Congrats>
+            <CongratsImg
+              src={"https://storage.googleapis.com/bimboss/hook_game_img/Congrats.gif"}
+            />
+            <CongratTest>
+              You are eligible for airdrop You will be able to claim your tokens!
+            </CongratTest>
+            <ClaimForm>
+              <Receive>
+                <Will>0xABB3…f8F7 will receive</Will>
+                <WillImgAndNum>
+                  <WillNum>{CongratsData.WillNum}</WillNum>
+                  <WillImg src={WillImgs} />
+                </WillImgAndNum>
+              </Receive>
+              <ClaimBtn onClick={claimToken}>Claim tokens</ClaimBtn>
+            </ClaimForm>
+          </ClaimBox>
+        ) : claimStatus === 0 ? (
+          <SorryBox>
+            <Congrats>Welcome!</Congrats>
+            <SorryTest>
+              Connect your wallet and check your eligibility for claiming tokens!
+            </SorryTest>
+            <SConnectButton
+              onClick={() => {
+                setIsShowModal(true);
+              }}
+              fetching={fetching}
+            >
+              Connect Wallet
+            </SConnectButton>
+          </SorryBox>
+        ) : (
+          <SorryBox>
+            <Congrats>Sorry</Congrats>
+            <SorryTest>You are not eligible for this airdrop round. Don’t worry!</SorryTest>
+            <SorryTest>There will be more airdrops in the future.</SorryTest>
+            <SorryTest>
+              The best way to improve your odds is to get involved. Start exploring today:)
+            </SorryTest>
+            <SorryBtn>Exploring HOOK</SorryBtn>
+          </SorryBox>
+        )}
+        <WalletModal
+          isShowModal={isShowModal}
+          connect={connect}
+          fetching={fetching}
+          setIsShowModal={setIsShowModal}
+        />
+      </>
+    );
+  };
+  return isMobile() ? (
     <>
+      {" "}
       <StakingWrap>
-        <Column maxWidth={1000}>
+        <Column maxWidth={375}>
           <StakingTitle>
-            <StakingTitleApi>API</StakingTitleApi>
-            <StakingTitleStak>Staking</StakingTitleStak>
+            <MStakingTitleApi>API</MStakingTitleApi>
+            <StakingTitleStak>Rewards</StakingTitleStak>
             <StakingTitleDashboard>Dashboard</StakingTitleDashboard>
           </StakingTitle>
-          <Trade>
-            Trade Bitcoin, Ethereum, USDT, and the top altcoins on the legendary crypto asset
-            exchange.
-          </Trade>
+          <Trade>Earn API by staking and more. </Trade>
         </Column>
 
         <Column maxWidth={910}>
@@ -780,7 +1043,7 @@ export default function Home({ connected, killSession, connect, fetching }: IHom
             <StakeOrClaimUl>
               <StakeOrClaimLiS
                 onClick={() => {
-                  return;
+                  //   return;
                   setStakeOrClaimLi(1);
                 }}
                 style={{
@@ -808,15 +1071,116 @@ export default function Home({ connected, killSession, connect, fetching }: IHom
         <Column maxWidth="100vw">
           <FoodBox>
             <GetStartedBox>
-              <Looks>Total LOOKS helps you earn rewaarda.It’s neat.</Looks>
-              <Powers>Get the token that Powers LooksRare</Powers>
-
+              <Looks>Rewards for API token holders accumulating.</Looks>
+              <Powers> Get the API token </Powers>
+              <BuyAndAddBox>
+                <BuyBoxBtn href="https://www.mexc.com/exchange/API_USDT">
+                  <BuyLook>Buy LOOKS</BuyLook>
+                  <BuyIcon className="iconfont">&#xe60f;</BuyIcon>
+                </BuyBoxBtn>
+                <AddToBtn>
+                  <AddTo>Add to Wallet</AddTo>
+                  <BuyIcon className="iconfont">&#xe60d;</BuyIcon>
+                </AddToBtn>
+              </BuyAndAddBox>
               <TheRates>
                 The rates shown on this page are only provided for your reference: APR and APY are
-                calculated based on current ROI. The actual rates will fluctuate a lot according to
-                many different factors, including token prices, trading volume, liquidity, amount
-                staked, and more.
+                calculated based on current ROI.
               </TheRates>
+              <TheRat>
+                The actual rates will fluctuate a lot according to many different factors, including
+                token prices, trading volume, liquidity, amount staked, and more.
+              </TheRat>
+            </GetStartedBox>
+            <CopyrightBox>
+              <CopyrightTitle>
+                <Copyright>Copyright 2022 Hook</Copyright>
+                <Blockchains>One-stop Data Analysis For All Blockchains.</Blockchains>
+              </CopyrightTitle>
+              <LinkBox>
+                <Link href="https://app.gitbook.com/o/dHoRYUVnGdpDW6kzvwKH/s/8MYNEydsCb1yG0qhMpJZ/products/hook">
+                  About
+                </Link>
+                <Link href="/licenses">API</Link>
+                <Link href="https://simmmple.com/terms-of-service">Contact</Link>
+                <Link href="https://www.blog.simmmple.com/">Help</Link>
+                <Link href="https://www.blog.simmmple.com/">Jobs</Link>
+                <Link href="https://www.blog.simmmple.com/">Bug Bounty</Link>
+                <Link href="">Brand</Link>
+                <Link href="https://app.gitbook.com/o/dHoRYUVnGdpDW6kzvwKH/s/8MYNEydsCb1yG0qhMpJZ/docs/terms-and-conditions">
+                  Terms of Service
+                </Link>
+              </LinkBox>
+            </CopyrightBox>
+          </FoodBox>
+        </Column>
+      </StakingWrap>
+    </>
+  ) : (
+    <>
+      <StakingWrap>
+        <Column maxWidth={1000}>
+          <StakingTitle>
+            <StakingTitleApi>API</StakingTitleApi>
+            <StakingTitleStak>Rewards</StakingTitleStak>
+            <StakingTitleDashboard>Dashboard</StakingTitleDashboard>
+          </StakingTitle>
+          <Trade>Earn API by staking and more. </Trade>
+        </Column>
+
+        <Column maxWidth={910}>
+          <StakeOrClaim>
+            <StakeOrClaimUl>
+              <StakeOrClaimLiS
+                onClick={() => {
+                  //   return;
+                  setMStakeOrClaimLi(1);
+                }}
+                style={{
+                  borderBottom: StakeOrClaimLi === 1 ? " 2px solid rgb(104, 99, 212)" : "",
+                  color: StakeOrClaimLi === 1 ? "#6863D4" : "#777E90",
+                }}
+              >
+                Stake
+              </StakeOrClaimLiS>
+              <StakeOrClaimLiSe
+                onClick={() => {
+                  setMStakeOrClaimLi(2);
+                }}
+                style={{
+                  borderBottom: StakeOrClaimLi === 2 ? " 2px solid rgb(104, 99, 212)" : "",
+                  color: StakeOrClaimLi === 2 ? "#6863D4" : "#777E90",
+                }}
+              >
+                Claim
+              </StakeOrClaimLiSe>
+            </StakeOrClaimUl>
+          </StakeOrClaim>
+          {MStakeOrClaimClass(1)}
+        </Column>
+        <Column maxWidth="100vw">
+          <FoodBox>
+            <GetStartedBox>
+              <Looks>Rewards for API token holders accumulating.</Looks>
+              <Powers> Get the API token </Powers>
+              <BuyAndAddBox>
+                <BuyBoxBtn href="https://www.mexc.com/exchange/API_USDT">
+                  <BuyLook>Buy LOOKS</BuyLook>
+                  <BuyIcon className="iconfont">&#xe60f;</BuyIcon>
+                </BuyBoxBtn>
+                <AddToBtn>
+                  <AddTo>Add to Wallet</AddTo>
+                  <BuyIcon className="iconfont">&#xe60d;</BuyIcon>
+                </AddToBtn>
+              </BuyAndAddBox>
+              <TheRates>
+                The rates shown on this page are only provided for your reference: APR and APY are
+                calculated based on current ROI.
+              </TheRates>
+              <TheRat>
+                The actual rates will fluctuate a lot according to many different factors, including
+                token prices, trading volume, liquidity, amount staked, and more.
+              </TheRat>
             </GetStartedBox>
             <CopyrightBox>
               <CopyrightTitle>
