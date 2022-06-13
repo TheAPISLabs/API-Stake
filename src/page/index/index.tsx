@@ -863,9 +863,10 @@ export default function Home({ connected, killSession, connect, fetching }: IHom
   const { chainId, account } = useWeb3React();
 
   //   const TokenContract = useConnect(TokenAbi, ContractAddress.token[chainId ?? 1]);
-  const ClaimContract = useConnect(ClaimContractAbi, ContractAddress.claim[chainId ?? 1]);
   const claimToken = () => {
-    console.log(account, ClaimContract);
+    const ClaimContract = useConnect(ClaimContractAbi, ContractAddress.claim[chainId ?? 1]);
+
+    // console.log(account, ClaimContract);
     // ClaimContract.methods.claimTokens();
     ClaimContract.methods.claimTokens().send({ from: account });
   };
