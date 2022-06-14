@@ -35,9 +35,7 @@ export const fonts = {
     bold: 700,
     extrabold: 800,
   },
-  family: {
-    OpenSans: `"Open Sans", sans-serif`,
-  },
+  family: "Inter",
 };
 
 export const transitions = {
@@ -107,7 +105,7 @@ export const globalStyle = `
   }
 
   body {
-    font-family: ${fonts.family.OpenSans};
+    font-family: ${fonts.family};
     font-style: normal;
     font-stretch: normal;
     font-weight: ${fonts.weight.normal};

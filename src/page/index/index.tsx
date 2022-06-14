@@ -51,7 +51,7 @@ const StakingTitleStak = styled.p`
   font-size: 48px;
   line-height: 58px;
   text-align: center;
-  color: #827790;
+  color: #9874ff;
   width: 197px;
   height: 58px;
   margin-right: 15px;
@@ -61,7 +61,7 @@ const MStakingTitleStak = styled.p`
   font-size: 28px;
   line-height: 35px;
   text-align: center;
-  color: #827790;
+  color: #9874ff;
   width: 104px;
   height: 35px;
   margin-right: 13px;
@@ -90,7 +90,7 @@ const Trade = styled.p`
   width: 332.8px;
   height: 53px;
   opacity: 1;
-  color: rgba(155, 155, 155, 1);
+  color: #b1b5c3;
   font-size: 14px;
   font-weight: 400;
   text-align: center;
@@ -196,7 +196,7 @@ const TOTALBox = styled.div`
 `;
 const TotalStaked = styled.div``;
 const TOTALSTAKEDTitle = styled.div`
-  color: rgba(119, 126, 144, 1);
+  color: #b1b5c3;
   font-size: 12px;
   font-weight: 400;
   /* font-family: "Inter"; */
@@ -217,7 +217,7 @@ const TotalNum = styled.div`
   margin-right: 12px;
 `;
 const TotalApi = styled.div`
-  color: rgba(119, 126, 144, 1);
+  color: #b1b5c3;
   font-size: 10px;
   font-weight: 400;
   font-family: "Inter";
@@ -239,17 +239,17 @@ const StakeOrClaimUl = styled.ul`
   justify-content: space-between;
 `;
 const StakeOrClaimLiS = styled.li`
-  color: rgba(119, 126, 144, 1);
+  color: #b1b5c3;
   font-size: 18px;
-  font-weight: 400;
+  font-weight: 900;
   font-family: "Inter";
   //   pointer-events: none;
   cursor: not-allowed;
 `;
 const StakeOrClaimLiSe = styled.li`
-  color: rgba(119, 126, 144, 1);
+  color: #b1b5c3;
   font-size: 18px;
-  font-weight: 400;
+  font-weight: 900;
   font-family: "Inter";
   cursor: pointer;
 `;
@@ -348,7 +348,7 @@ const APIPriceBox = styled.div`
   }
 `;
 const APIPriceTitle = styled.div`
-  color: rgba(155, 155, 155, 1);
+  color: #b1b5c3;
   font-size: 12px;
   font-weight: 400;
   text-align: left;
@@ -376,7 +376,7 @@ const ClaimBox = styled.div`
   &:hover {
     border: 0.5px solid #6639e5;
   }
-  padding: 92px 33px 30px 56px;
+  padding: 65px 33px 0px 56px;
   position: relative;
 `;
 const MClaimBox = styled.div`
@@ -390,7 +390,7 @@ const SorryBox = styled.div`
   width: 899px;
   height: 348px;
   border: 0.5px solid rgba(155, 155, 155, 0.3);
-  padding: 92px 33px 30px 56px;
+  padding: 65px 33px 0px 56px;
   &:hover {
     border: 0.5px solid #6639e5;
   }
@@ -424,7 +424,7 @@ const ClaimForm = styled.div`
   height: 83px;
   border: 1px solid #6639e5;
   border-radius: 10px;
-  margin-top: 48px;
+  margin-top: 40px;
   display: flex;
   justify-content: space-between;
   padding: 17px 32px;
@@ -496,6 +496,7 @@ const WillNum = styled.div`
   font-weight: 400;
   text-align: center;
   line-height: 32px;
+  margin-right: 10px;
 `;
 const ClaimBtn = styled.div`
   width: 198px;
@@ -570,24 +571,24 @@ const MSorryBtn = styled.div`
   }
 `;
 const CongratTest = styled.p`
-  width: 209px;
-  color: rgba(119, 126, 144, 1);
-  font-size: 12px;
+  width: 285px;
+  color: #b1b5c3;
+  font-size: 14px;
   font-weight: 400;
   margin: 0 auto;
   position: relative;
   z-index: 1;
 `;
 const SorryTest = styled.div`
-  width: 436px;
-  color: rgba(119, 126, 144, 1);
-  font-size: 12px;
+  width: 505px;
+  color: #b1b5c3;
+  font-size: 14px;
   font-weight: 400;
   margin: 0 auto;
 `;
 const MSorryTest = styled.div`
   width: 307px;
-  color: rgba(119, 126, 144, 1);
+  color: #b1b5c3;
   font-size: 12px;
   font-weight: 400;
   margin: 0 auto;
@@ -613,7 +614,7 @@ const MGetStartedBox = styled.div`
   border-bottom: 1px solid rgba(50, 46, 75, 1);
 `;
 const Looks = styled.p`
-  color: rgba(126, 126, 126, 1);
+  color: #b1b5c3;
   font-size: 12px;
   font-weight: 400;
   text-align: center;
@@ -622,7 +623,7 @@ const Looks = styled.p`
 `;
 
 const Powers = styled.p`
-  color: rgba(130, 119, 144, 1);
+  color: #9874ff;
   font-size: 22px;
   font-weight: 900;
   text-align: center;
@@ -632,29 +633,30 @@ const Powers = styled.p`
 `;
 const TheRates = styled.div`
   width: 758px;
-  color: rgba(155, 155, 155, 1);
+  color: #b1b5c3;
   font-size: 11px;
   font-weight: 400;
   margin: 0 auto;
-  line-height: 14.2px;
+  line-height: 22px;
+
   margin-top: 58px;
 `;
 const MTheRates = styled.div`
   width: 374px;
-  color: rgba(155, 155, 155, 1);
+  color: #b1b5c3;
   font-size: 11px;
   font-weight: 400;
   margin: 0 auto;
-  line-height: 14.2px;
+  line-height: 22px;
 `;
 const TheRat = styled.div`
-  width: 815px;
+  width: 821px;
   height: 29px;
-  color: rgba(155, 155, 155, 1);
+  color: #b1b5c3;
   font-size: 11px;
   font-weight: 400;
   margin: 0 auto;
-  line-height: 14.2px;
+  line-height: 22px;
   margin-bottom: 62px;
 `;
 const CopyrightBox = styled.div`
@@ -721,7 +723,7 @@ const MXLinkBox = styled.div`
   margin-bottom: 39px;
 `;
 const Link = styled.a`
-  color: rgba(195, 177, 246, 1);
+  color: #9874ff;
   font-size: 14px;
   font-weight: 400;
   text-align: left;
@@ -755,16 +757,19 @@ const MWillImg = styled.img`
   margin-top: 3px;
 `;
 const SConnectButton = styled(Button as any)`
-  border-radius: 8px;
-  font-size: ${fonts.size.medium};
-  margin: 12px 0;
-  background: #6639e5;
-  border-radius: 16px;
-  width: 197px;
-  height: 32px;
-  color: #fff;
-  & > div {
-    background: transparent !important;
+  width: 198px;
+  height: 46px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(159, 107, 244, 1) 0%, rgba(102, 57, 229, 1) 100%);
+  color: rgba(255, 255, 255, 1);
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+  margin: auto;
+  &:hover {
+    transform: translateY(-1px);
+    opacity: 0.5;
   }
   margin-top: 70px;
 `;
@@ -1037,7 +1042,11 @@ export default function Home({ connected, killSession, connect, fetching }: IHom
             <CongratTest>You will be able to claim your tokens!</CongratTest>
             <ClaimForm>
               <Receive>
-                <Will>0xABB3…f8F7 will receive</Will>
+                <Will>
+                  {account?.slice(0, 4)}...{account?.slice(account.length - 5, account.length - 1)}
+                  {""}
+                  &nbsp; will receive
+                </Will>
                 <WillImgAndNum>
                   <WillNum>{CongratsData.WillNum}</WillNum>
                   <WillImg src={WillImgs} />
@@ -1073,7 +1082,9 @@ export default function Home({ connected, killSession, connect, fetching }: IHom
             <SorryTest>
               The best way to improve your odds is to get involved. Start exploring today:)
             </SorryTest>
-            <SorryBtn>Exploring HOOK</SorryBtn>
+            <SorryBtn>
+              <a href="https://www.theapis.xyz/">Exploring HOOK</a>{" "}
+            </SorryBtn>
           </SorryBox>
         )}
         <WalletModal
@@ -1100,7 +1111,7 @@ export default function Home({ connected, killSession, connect, fetching }: IHom
                   }}
                   style={{
                     backgroundColor: currentLi === 1 ? "rgba(102,57,229,1)" : "rgba(13,10,36,1)",
-                    color: currentLi === 1 ? "#FFFFFF" : "#9691B5",
+                    color: currentLi === 1 ? "#FFFFFF" : "#B1B5C3",
                   }}
                 >
                   Stake
@@ -1111,7 +1122,7 @@ export default function Home({ connected, killSession, connect, fetching }: IHom
                   }}
                   style={{
                     backgroundColor: currentLi === 2 ? "rgba(102,57,229,1)" : "rgba(13,10,36,1)",
-                    color: currentLi === 2 ? "#FFFFFF" : "#9691B5",
+                    color: currentLi === 2 ? "#FFFFFF" : "#B1B5C3",
                   }}
                 >
                   Unstake
@@ -1202,7 +1213,10 @@ export default function Home({ connected, killSession, connect, fetching }: IHom
             <MClaimBtn onClick={claimToken}>Claim tokens</MClaimBtn>
             <MClaimForm>
               <Receive>
-                <Will>0xABB3…f8F7 will receive</Will>
+                <Will>
+                  {account?.slice(0, 4)}...{account?.slice(account.length - 5, account.length - 1)}{" "}
+                  &nbsp; will receive
+                </Will>
                 <MWillImgAndNum>
                   <WillNum>{CongratsData.WillNum}</WillNum>
                   <MWillImg src={WillImgs} />
@@ -1236,7 +1250,9 @@ export default function Home({ connected, killSession, connect, fetching }: IHom
             <MSorryTest> Don’t worry!There will be more airdrops in the future.</MSorryTest>
             <MSorryTest>The best way to improve your odds is to get involved.</MSorryTest>
             <MSorryTest>Start exploring today:)</MSorryTest>
-            <MSorryBtn>Exploring HOOK</MSorryBtn>
+            <MSorryBtn>
+              <a href="https://www.theapis.xyz/">Exploring HOOK</a>
+            </MSorryBtn>
           </MSorryBox>
         )}
         <WalletModal
@@ -1258,7 +1274,10 @@ export default function Home({ connected, killSession, connect, fetching }: IHom
             <MStakingTitleStak>Rewards</MStakingTitleStak>
             <MStakingTitleDashboard>Dashboard</MStakingTitleDashboard>
           </MStakingTitle>
-          <Trade>Earn API by staking and more. </Trade>
+          <Trade>
+            Earn API by staking and more. <br />
+            Get the tokens that power The APIS eco-system.{" "}
+          </Trade>
         </Column>
 
         <Column maxWidth={327}>
@@ -1270,8 +1289,8 @@ export default function Home({ connected, killSession, connect, fetching }: IHom
                   //   setMStakeOrClaimLi(1);
                 }}
                 style={{
-                  borderBottom: StakeOrClaimLi === 1 ? " 2px solid rgb(104, 99, 212)" : "",
-                  color: StakeOrClaimLi === 1 ? "#6863D4" : "#777E90",
+                  borderBottom: StakeOrClaimLi === 1 ? " 2px solid #6863D4" : "",
+                  color: StakeOrClaimLi === 1 ? "#6863D4" : "#B1B5C3",
                 }}
               >
                 Stake
@@ -1281,8 +1300,8 @@ export default function Home({ connected, killSession, connect, fetching }: IHom
                   setMStakeOrClaimLi(2);
                 }}
                 style={{
-                  borderBottom: StakeOrClaimLi === 2 ? " 2px solid rgb(104, 99, 212)" : "",
-                  color: StakeOrClaimLi === 2 ? "#6863D4" : "#777E90",
+                  borderBottom: StakeOrClaimLi === 2 ? " 2px solid #6863D4" : "",
+                  color: StakeOrClaimLi === 2 ? "#6863D4" : "#B1B5C3",
                 }}
               >
                 Claim
@@ -1319,7 +1338,7 @@ export default function Home({ connected, killSession, connect, fetching }: IHom
             </MGetStartedBox>
             <MCopyrightBox>
               <MCopyrightTitle>
-                <MCopyright>Copyright 2022 Hook</MCopyright>
+                <MCopyright>Copyright 2022 The APIS</MCopyright>
                 <MBlockchains>One-stop Data Analysis For All Blockchains.</MBlockchains>
               </MCopyrightTitle>
               <MLinkBox>
@@ -1352,7 +1371,10 @@ export default function Home({ connected, killSession, connect, fetching }: IHom
             <StakingTitleStak>Rewards</StakingTitleStak>
             <StakingTitleDashboard>Dashboard</StakingTitleDashboard>
           </StakingTitle>
-          <Trade>Earn API by staking and more. </Trade>
+          <Trade>
+            Earn API by staking and more.
+            <br /> Get the tokens that power The APIS eco-system.
+          </Trade>
         </Column>
 
         <Column maxWidth={910}>
@@ -1417,7 +1439,7 @@ export default function Home({ connected, killSession, connect, fetching }: IHom
             </GetStartedBox>
             <CopyrightBox>
               <CopyrightTitle>
-                <Copyright>Copyright 2022 Hook</Copyright>
+                <Copyright>Copyright 2022 The APIS</Copyright>
                 <Blockchains>One-stop Data Analysis For All Blockchains.</Blockchains>
               </CopyrightTitle>
               <LinkBox>

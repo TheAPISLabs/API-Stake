@@ -53,39 +53,39 @@ const AplImg = styled.img`
 const MAplImg = styled.img`
   width: 100%;
 `;
-const DocsBox = styled.div`
-  display: flex;
-  width: 156px;
-  justify-content: space-between;
-`;
-const Staking = styled.p`
-  color: rgba(155, 155, 155, 1);
-  font-size: 12px;
-  font-weight: 500;
-  text-align: center;
-  line-height: 16px;
-`;
-const Point = styled.p`
-  color: rgba(155, 155, 155, 1);
-  font-size: 12px;
-  font-weight: 500;
-  text-align: center;
-  line-height: 17px;
-`;
-const Docs = styled.p`
-  color: rgba(255, 255, 255, 1);
-  font-size: 12px;
-  font-weight: 500;
-  text-align: center;
-  line-height: 16px;
-`;
-const Govern = styled.p`
-  color: rgba(155, 155, 155, 1);
-  font-size: 12px;
-  font-weight: 500;
-  text-align: left;
-  line-height: 16px;
-`;
+// const DocsBox = styled.div`
+//   display: flex;
+//   width: 156px;
+//   justify-content: space-between;
+// `;
+// const Staking = styled.p`
+//   color: rgba(155, 155, 155, 1);
+//   font-size: 12px;
+//   font-weight: 500;
+//   text-align: center;
+//   line-height: 16px;
+// `;
+// const Point = styled.p`
+//   color: rgba(155, 155, 155, 1);
+//   font-size: 12px;
+//   font-weight: 500;
+//   text-align: center;
+//   line-height: 17px;
+// `;
+// const Docs = styled.p`
+//   color: rgba(255, 255, 255, 1);
+//   font-size: 12px;
+//   font-weight: 500;
+//   text-align: center;
+//   line-height: 16px;
+// `;
+// const Govern = styled.p`
+//   color: rgba(155, 155, 155, 1);
+//   font-size: 12px;
+//   font-weight: 500;
+//   text-align: left;
+//   line-height: 16px;
+// `;
 
 const SActiveChain = styled(SActiveAccount as any)`
   flex-direction: column;
