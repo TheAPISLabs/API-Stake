@@ -24,7 +24,7 @@ const SHeader = styled.div`
   justify-content: space-between;
 
   //   max-width: 100%;
-  padding: 0 26%;
+  padding: 0 200px;
   background: #161426;
 `;
 
