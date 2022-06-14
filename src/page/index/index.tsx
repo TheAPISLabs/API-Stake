@@ -766,6 +766,7 @@ const SConnectButton = styled(Button as any)`
   & > div {
     background: transparent !important;
   }
+  margin-top: 70px;
 `;
 const MSConnectButton = styled(Button as any)`
   border-radius: 8px;
