@@ -249,13 +249,13 @@ const Header = ({ connected, killSession, connect, fetching }: IHeaderProps) => 
             <AplImg src={aplImgs} />
           </a>
         </SActiveChain>
-        <DocsBox>
+        {/* <DocsBox>
           <Staking>Staking</Staking>
           <Point>·</Point>
           <Docs>Docs</Docs>
           <Point>·</Point>
           <Govern>Govern</Govern>
-        </DocsBox>
+        </DocsBox> */}
         {account ? (
           <SActiveAccount>
             <SBlockie address={account} />

@@ -623,8 +623,8 @@ const Looks = styled.p`
 
 const Powers = styled.p`
   color: rgba(130, 119, 144, 1);
-  font-size: 21px;
-  font-weight: 400;
+  font-size: 22px;
+  font-weight: 900;
   text-align: center;
   line-height: 16px;
   margin-bottom: 26px;
