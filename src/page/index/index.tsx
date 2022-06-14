@@ -619,7 +619,6 @@ const Looks = styled.p`
   text-align: center;
   line-height: 16px;
   margin-bottom: 28px;
-  margin-top: 88px;
 `;
 
 const Powers = styled.p`
@@ -629,6 +628,7 @@ const Powers = styled.p`
   text-align: center;
   line-height: 16px;
   margin-bottom: 26px;
+  font-family: "Inter";
 `;
 const TheRates = styled.div`
   width: 758px;
@@ -1297,7 +1297,7 @@ export default function Home({ connected, killSession, connect, fetching }: IHom
               <Powers> Get the API token </Powers>
               <MBuyAndAddBox>
                 <BuyBoxBtn href="https://www.mexc.com/exchange/API_USDT">
-                  <BuyLook>Buy LOOKS</BuyLook>
+                  <BuyLook>Buy API</BuyLook>
                   <BuyIcon className="iconfont">&#xe60f;</BuyIcon>
                 </BuyBoxBtn>
                 <AddToBtn>
@@ -1359,8 +1359,8 @@ export default function Home({ connected, killSession, connect, fetching }: IHom
             <StakeOrClaimUl>
               <StakeOrClaimLiS
                 onClick={() => {
-                  //   return;
-                  setStakeOrClaimLi(1);
+                  return;
+                  //   setStakeOrClaimLi(1);
                 }}
                 style={{
                   borderBottom: StakeOrClaimLi === 1 ? " 2px solid rgb(104, 99, 212)" : "",
@@ -1391,7 +1391,7 @@ export default function Home({ connected, killSession, connect, fetching }: IHom
               <Powers> Get the API token </Powers>
               <BuyAndAddBox>
                 <BuyBoxBtn href="https://www.mexc.com/exchange/API_USDT">
-                  <BuyLook>Buy LOOKS</BuyLook>
+                  <BuyLook>Buy API</BuyLook>
                   <BuyIcon className="iconfont">&#xe60f;</BuyIcon>
                 </BuyBoxBtn>
                 <AddToBtn>
